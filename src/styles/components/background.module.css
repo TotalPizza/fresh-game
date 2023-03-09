@@ -1,0 +1,14 @@
+.tile{
+    position: relative;
+    display: block;
+    float: left;
+    z-index: 1;
+}
+
+.tile:hover{
+    position: relative;
+    display: block;
+    border-color:rgb(255, 253, 110, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 253, 110, 0.5);
+    z-index: 2;
+}
