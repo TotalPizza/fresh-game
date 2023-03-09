@@ -1,0 +1,44 @@
+.usd_value_display{
+    position: fixed;
+    right: 300px;
+    margin-top: 12px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.usd_frame{
+    position: fixed;
+    right: 300px;
+    margin-top: 12px;
+    z-index: 5;
+}
+
+.usd_icon{
+    position: fixed;
+    right: 303px;
+    margin-top: 14px;
+    z-index: 4;
+}
+
+.value_frame{
+    position: fixed;
+    right: 180px;
+    margin-top: 10px;
+    z-index: 4;
+}
+
+.value_frame_filler{
+    position: fixed;
+    right: 180px;
+    margin-top: 10px;
+    z-index: 3;
+}
+
+.value_text{
+    position: relative;
+    color: black;
+    margin-left: 110%;
+    margin-top: 18px;
+    font: 20px Arial;
+    z-index: 3;
+}
