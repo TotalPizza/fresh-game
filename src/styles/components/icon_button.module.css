@@ -1,0 +1,44 @@
+.button{
+    position: fixed;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.icon{
+    position: fixed;
+    left: 14px;
+    margin-top: 12px;
+    z-index: 3;
+}
+
+.frame{
+    position: fixed;
+    left: 10px;
+    margin-top: 8px;
+    z-index: 4;
+    opacity: 1;
+}
+
+.frame:hover{
+    position: fixed;
+    left: 10px;
+    margin-top: 8px;
+    z-index: 4;
+    opacity: 0;
+}
+
+.frame_hovered{
+    position: fixed;
+    left: 10px;
+    margin-top: 8px;
+    z-index: 4;
+    opacity: 0;
+}
+
+.frame_hovered:hover{
+    position: fixed;
+    left: 5px;
+    margin-top: 3px;
+    z-index: 5;
+    opacity: 1;
+}

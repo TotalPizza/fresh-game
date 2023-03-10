@@ -10,5 +10,6 @@
     display: block;
     border-color:rgb(255, 253, 110, 0.5);
     box-shadow: 0 0 0 3px rgba(255, 253, 110, 0.5);
+    cursor: none;
     z-index: 2;
 }

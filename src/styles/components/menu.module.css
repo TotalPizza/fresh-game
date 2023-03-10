@@ -1,0 +1,11 @@
+.menu{
+    position: fixed;
+    top: 80px;
+    left: 25%;
+    z-index: 5;
+}
+
+.menu_background{
+    position: fixed;
+    z-index: 5;
+}

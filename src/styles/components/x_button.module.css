@@ -1,0 +1,41 @@
+.x_button{
+    position: fixed;
+    z-index: 5;
+    cursor: pointer;
+}
+
+.x_button_filler{
+    position: fixed;
+    margin-top: 1px;
+    margin-left: 2px;
+    z-index: 5;
+}
+
+.x_button_filler_hovered{
+    position: fixed;
+    margin-top: 1px;
+    margin-left: 2px;
+    z-index: 6;
+    opacity: 0;
+}
+.x_button_filler_hovered:hover{
+    position: fixed;
+    margin-top: 1px;
+    margin-left: 2px;
+    z-index: 6;
+    opacity: 1;
+}
+
+.x_symbol{
+    position: fixed;
+    margin-left: 15px;
+    margin-top: 13px;
+    pointer-events: none;
+    z-index: 7;
+}
+
+.x_button_frame{
+    position: fixed;
+    pointer-events: none;
+    z-index: 6;
+}
