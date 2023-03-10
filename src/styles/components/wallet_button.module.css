@@ -1,0 +1,47 @@
+.button{
+    position: fixed;
+    right: 20px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.frame{
+    position: fixed;
+    right: 20px;
+    pointer-events: none;
+    z-index: 6;
+}
+
+.glas{
+    position: fixed;
+    right: 20px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.edge{
+    position: fixed;
+    right: 20px;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.logo{
+    position: fixed;
+    right: 20px;
+    z-index: 3;
+}
+
+.logo_hover{
+    position: fixed;
+    right: 20px;
+    opacity: 0;
+    z-index: 4;
+}
+
+.logo_hover:hover{
+    position: fixed;
+    right: 20px;
+    opacity: 1;
+    z-index: 4;
+}
