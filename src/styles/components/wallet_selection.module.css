@@ -1,6 +1,8 @@
 .individualWalletButton {
+    font-family: castellar;
     font-size: 30px;
-    color: rgb(26, 33, 28);
+    color: rgb(0, 0, 0);
+    width: 190px;
     margin-right: 5%;
     background-color: rgb(133, 106, 68);
     border-color: rgb(87, 65, 26);
@@ -15,6 +17,7 @@
 }
 
 .bodyText{
+    font-family: castellar;
     text-align: center;
 }
 

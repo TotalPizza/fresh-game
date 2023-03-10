@@ -8,7 +8,6 @@ export default function FarmValueDisplay() {
     const [modalShow, setModalShow] = useState(false)
     const { available, connect, connectors, disconnect } = useConnectors()
     const { chain } = useNetwork()
-    var buttonText = ""
 
     function handleClose() {
         setModalShow(false) 

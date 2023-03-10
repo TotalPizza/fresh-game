@@ -45,3 +45,16 @@
     opacity: 1;
     z-index: 4;
 }
+
+.modal_header{
+    font-family: castellar;
+    color: rgb(189, 188, 188);
+    border-color: black;
+    background-color: rgb(126, 103, 61);
+}
+
+.modal_body{
+    font-family: castellar;
+    color: rgb(189, 188, 188);
+    background-color: rgb(70, 54, 26);
+}

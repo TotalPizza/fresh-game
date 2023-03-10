@@ -55,10 +55,10 @@ export default function WalletButton(props: {account: AccountInterface | undefin
                 <Image className={styles.logo_hover} alt={"wallet_logo_hover"} src={walletLogoHoverPath} width={145} height={145}/>
             </div>
             <Modal show={modalShow} onHide={handleClose}>
-                <Modal.Header className={styles.modalHeader} closeButton>
+                <Modal.Header className={styles.modal_header} closeButton>
                     <Modal.Title>Select A Wallet Provider</Modal.Title>
                 </Modal.Header>
-                <Modal.Body className={styles.modalBody}>
+                <Modal.Body className={styles.modal_body}>
                     <WalletSelection handleClose={handleClose} setWalletType={setWalletType}/>
                 </Modal.Body>
             </Modal> 
