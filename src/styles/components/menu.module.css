@@ -18,3 +18,8 @@
     margin-top: 200px;
     z-index: 5;
 }
+
+.asset_table_head{
+    font-family: castellar;
+    z-index: 5;
+}
