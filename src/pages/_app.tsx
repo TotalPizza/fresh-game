@@ -17,10 +17,10 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <StarknetConfig connectors={connectors} defaultProvider={provider}>
       <NextHead>
-        <title>Commercium</title>
+        <title>Age of Stark</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-        <meta name="description" content="The Commercium, providing on-chain DEX aggregation on StarkNet." />
-        <link rel="icon" href='./images/favicon.png'/>
+        <meta name="description" content="Age of Stark provides a fun way for you to manage your Starknet assets." />
+        <link rel="icon" href='./favicon.png'/>
       </NextHead>
       <Component {...pageProps} />
       <Analytics/>
