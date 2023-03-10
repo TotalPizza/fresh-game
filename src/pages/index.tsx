@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useAccount } from '@starknet-react/core'
 import Background from '@/components/background'
 import LeftMenuBar from '@/components/left_menu_bar'
 import FarmValueDisplay from '@/components/farm_value_display'
@@ -9,6 +10,7 @@ import WalletButton from '@/components/wallet'
 export default function Home() {
   const [show_farmer_menu, set_show_farmer_menu] = useState(false)
   const [show_build_menu, set_show_build_menu] = useState(false)
+  const {account, address, status} = useAccount();
 
   const toggle_farm_menu = () => {
     set_show_farmer_menu(!show_farmer_menu);
@@ -27,7 +29,7 @@ export default function Home() {
         <FarmValueDisplay/>
         <FarmMenu show={show_farmer_menu} toggle_farm_menu={toggle_farm_menu}/>
         <TownHall/>
-        <WalletButton/>
+        <WalletButton account={account}/>
       </body>
     </>
   )

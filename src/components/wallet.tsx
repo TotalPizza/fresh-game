@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import styles from '@/styles/components/wallet_button.module.css'
+import { AccountInterface } from 'starknet'
 
-export default function WalletButton() {
+export default function WalletButton(props: {account: AccountInterface | undefined}) {
     return (
         <div className={styles.button}>
             <Image className={styles.frame} alt={"wallet_frame"} src='/wallet_frame.png' width={150} height={150}/>
