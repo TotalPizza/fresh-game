@@ -1,0 +1,24 @@
+.icon{
+    position: fixed;
+    left: 270px;
+    margin-top: -2px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.icon_hover{
+    position: fixed;
+    left: 270px;
+    margin-top: -2px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 4;
+}
+.icon_hover:hover{
+    position: fixed;
+    left: 270px;
+    margin-top: -2px;
+    cursor: pointer;
+    opacity: 1;
+    z-index: 4;
+}
