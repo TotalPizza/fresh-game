@@ -30,9 +30,9 @@ export default function Background(props: {dark_mode: boolean}) {
     
     let gras_texture;
     if (props.dark_mode){
-      gras_texture ='/grass_dark.png';
+      gras_texture ='/images/grass_dark.png';
     }else{
-      gras_texture ='/grass.png';
+      gras_texture ='/images/grass.png';
     }
     let number_of_row_tiles = Math.ceil(windowSize.width/50);
     let number_of_cols = Math.ceil(windowSize.height/50);

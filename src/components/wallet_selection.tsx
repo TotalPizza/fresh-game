@@ -10,7 +10,7 @@ export function WalletSelection(props: {handleClose: () => void, setWalletType: 
     return (
       <div className={styles.bodyText}>
         <p>You do not have a wallet extension installed.</p>
-        <img className={styles.sad_image} src='./sad_pepe.png'/>
+        <img className={styles.sad_image} src='./images/sad_pepe.png'/>
       </div>
     )
   }

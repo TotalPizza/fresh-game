@@ -5,11 +5,11 @@ export default function DarkMode(props:{dark_mode: boolean, toggle_dark_mode: ()
     let icon_src;
     let icon_src_hover;
     if (props.dark_mode) {
-        icon_src = '/light_mode.png';
-        icon_src_hover = '/light_mode_hover.png';
+        icon_src = '/images/light_mode.png';
+        icon_src_hover = '/images/light_mode_hover.png';
     } else{
-        icon_src = '/dark_mode.png'
-        icon_src_hover = '/dark_mode_hover.png';
+        icon_src = '/images/dark_mode.png'
+        icon_src_hover = '/images/dark_mode_hover.png';
     }
     return (
         <>
