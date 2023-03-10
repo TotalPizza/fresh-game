@@ -1,12 +1,11 @@
 .building{
     position: fixed;
-    top: 300px;
     cursor: pointer;
-    left: 700px;
+    top: 250px;
+    left: 500px;
     z-index: 4;
 }
 
 .town_hall{
-    position: fixed;
     z-index: 4;
 }
