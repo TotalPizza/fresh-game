@@ -1,0 +1,24 @@
+.individualWalletButton {
+    font-size: 30px;
+    color: rgb(26, 33, 28);
+    margin-right: 5%;
+    background-color: rgb(133, 106, 68);
+    border-color: rgb(87, 65, 26);
+}
+
+.individualWalletButton:hover {
+    font-size: 30px;
+    margin-right: 5%;
+    color: rgb(26, 33, 28);
+    background-color: rgb(150, 118, 73);
+    border-color: rgb(87, 65, 26);
+}
+
+.bodyText{
+    text-align: center;
+}
+
+.sad_image {
+    margin-left: auto;
+    margin-right: auto;
+}

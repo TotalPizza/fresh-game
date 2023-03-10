@@ -5,6 +5,7 @@ import { RpcProvider, RpcProviderOptions } from 'starknet'
 import '@/styles/globals.css'
 import { StarknetConfig, InjectedConnector } from '@starknet-react/core'
 import type { AppProps } from 'next/app'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   const infuraURL: RpcProviderOptions = {nodeUrl: "https://starknet-mainnet.infura.io/v3/a83025cd6f6246ae86cfe05ba6fe630e"}

@@ -1,33 +1,33 @@
 .usd_value_display{
     position: fixed;
-    right: 300px;
+    left: 100px;
     cursor: pointer;
     z-index: 3;
 }
 
 .usd_frame{
     position: fixed;
-    right: 300px;
+    left: 100px;
     margin-top: 2px;
     z-index: 5;
 }
 
 .usd_icon{
     position: fixed;
-    right: 303px;
+    left: 103px;
     margin-top: 4px;
     z-index: 4;
 }
 
 .value_frame{
     position: fixed;
-    right: 180px;
+    left: 90px;
     z-index: 4;
 }
 
 .value_frame_filler{
     position: fixed;
-    right: 180px;
+    left: 90px;
     z-index: 3;
 }
 
