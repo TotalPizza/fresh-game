@@ -1,9 +1,12 @@
+import {useState} from 'react'
 import Image from 'next/image'
 import styles from '@/styles/components/menu.module.css'
 import XButton from './x_button'
-import {tokens} from '@/hooks/token_list'	
+import {tokens} from '@/hooks/token_list'
+import {protocols, Protocol} from '@/hooks/protocol_list'	
 
-export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => void}) {
+export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => void, select_farm: (farm: Protocol) => void}) {
+    let [selected_token, set_selected_token] = useState("");
     
     return (
         <div className={styles.menu} hidden={!props.show}>
@@ -13,13 +16,13 @@ export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => 
             <table className={styles.seeds_table}>
                 <tbody>
                     <br/>
-                    <SeedsList/>
+                    <SeedsList set_selected_token={set_selected_token}/>
                 </tbody>
             </table>
             <table className={styles.fields_table}>
                 <tbody>
                     <br/>
-                    <FieldsList/>
+                    <FieldsList token_name={selected_token} select_farm={props.select_farm}/>
                 </tbody>
             </table>
             <div className={styles.fields_heading}>Fields</div>
@@ -27,11 +30,11 @@ export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => 
     )
 }
 
-function SeedsList(){
+function SeedsList(props:{set_selected_token: (token_name: string) => void}) {
     let seeds: JSX.Element[] = [];
     tokens.forEach(token => {
         seeds.push(
-            <tr className={styles.seeds_row}>
+            <tr className={styles.seeds_row} onClick={()=>props.set_selected_token(token.name)}>
                 <td className={styles.seeds_col}>
                     <Image className={styles.asset_icon} alt={token.name} src={token.src} width={80} height={80}/>
                 </td>
@@ -55,16 +58,30 @@ function SeedsList(){
     )
 }
 
-function FieldsList(){
+function FieldsList(props:{token_name: string, select_farm: (farm: Protocol) => void}){
     let fields: JSX.Element[] = [];
-    tokens.forEach(token => {
+    let valid_protocols: Protocol[] = [];
+    if (props.token_name === ""){
+        return(
+            <>
+            </>
+        )
+    }
+    protocols.forEach(token => {
+        if (token.name === props.token_name){
+            token.protocols.forEach(protocol => {
+                valid_protocols.push(protocol);
+            })
+        }
+    });
+    valid_protocols.forEach(protocol => {
         fields.push(
-            <tr className={styles.fields_row}>
+            <tr className={styles.fields_row} onClick={()=>props.select_farm(protocol)}>
                 <td className={styles.fields_col}>
-                    <Image className={styles.asset_icon} alt={token.name} src={token.src} width={80} height={80}/>
+                    <Image className={styles.asset_icon} alt={protocol.name} src={protocol.src} width={80} height={80}/>
                 </td>
                 <td className={styles.fields_col}>
-                    {"Nostra"}
+                    {protocol.name}
                 </td>
             </tr>
         ) 

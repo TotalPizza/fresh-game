@@ -37,9 +37,12 @@ export default function Background(props: {dark_mode: boolean}) {
     let number_of_row_tiles = Math.ceil(windowSize.width/50);
     let number_of_cols = Math.ceil(windowSize.height/50);
     let tiles = [];
-    for (let i = 0; i < number_of_row_tiles*number_of_cols; i++) {
+    const tile_amount = number_of_row_tiles*number_of_cols;
+    for (let i = 0; i < tile_amount; i++) {
         tiles.push(
+          <div className={styles.tile_container}>
             <Image key={i} className={styles.tile} alt={'p'+i} src={gras_texture} width={50} height={50}/>
+          </div>
         )
     }
     return (

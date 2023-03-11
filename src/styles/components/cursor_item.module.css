@@ -1,0 +1,5 @@
+.curso_image{
+    position: absolute;
+    cursor: none;
+    z-index: 7;
+}

@@ -1,0 +1,54 @@
+.menu{
+    position: fixed;
+    left: 10%;
+    top: 10%;
+    right: 25%;
+    bottom: 0;
+    z-index: 5;
+}
+
+.menu_background{
+    position: fixed;
+    z-index: 5;
+}
+
+.building_icon{
+    position: fixed;
+    margin-left: 110px;
+    margin-top: 200px;
+    z-index: 5;
+}
+
+.building_icon_frame{
+    position: fixed;
+    margin-left: 110px;
+    margin-top: 200px;
+    z-index: 6;
+}
+
+
+.building_icon_frame_hover{
+    position: fixed;
+    margin-left: 110px;
+    margin-top: 200px;
+    opacity: 0;
+    z-index: 6;
+}
+.building_icon_frame_hover:hover{
+    position: fixed;
+    margin-left: 105px;
+    margin-top: 195px;
+    cursor: pointer;
+    opacity: 1;
+    z-index: 6;
+}
+
+.building_heading{
+    position: fixed;
+    margin-left: 190px;
+    margin-top: 100px;
+    font-family: castellar;
+    font-size: 50px;
+    height: 50px;
+    z-index: 5;
+}
