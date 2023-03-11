@@ -1,0 +1,5 @@
+.buildings{
+    position: absolute;
+    cursor: pointer;
+    z-index: 5;
+}

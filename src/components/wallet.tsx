@@ -48,11 +48,11 @@ export default function WalletButton(props: {account: AccountInterface | undefin
     return (
         <>
             <div className={styles.button} onClick={() => {setModalShow(true)}}>
-                <Image className={styles.frame} alt={"wallet_frame"} src='/images/wallet_frame.png' width={150} height={150}/>
-                <Image className={styles.glas} alt={"wallet_glas"} src='/images/wallet_glas.png' width={145} height={145}/>
-                <Image className={styles.edge} alt={"wallet_edge"} src='/images/wallet_edge.png' width={145} height={145}/>
-                <Image className={styles.logo} alt={"wallet_logo"} src={walletLogoPath} width={145} height={145}/>
-                <Image className={styles.logo_hover} alt={"wallet_logo_hover"} src={walletLogoHoverPath} width={145} height={145}/>
+                <Image className={styles.frame} alt={"wallet_frame"} src='/images/wallet_frame.png' width={210} height={210}/>
+                <Image className={styles.glas} alt={"wallet_glas"} src='/images/wallet_glas.png' width={205} height={205}/>
+                <Image className={styles.edge} alt={"wallet_edge"} src='/images/wallet_edge.png' width={205} height={205}/>
+                <Image className={styles.logo} alt={"wallet_logo"} src={walletLogoPath} width={210} height={210}/>
+                <Image className={styles.logo_hover} alt={"wallet_logo_hover"} src={walletLogoHoverPath} width={210} height={210}/>
             </div>
             <Modal show={modalShow} onHide={handleClose}>
                 <Modal.Header className={styles.modal_header} closeButton>

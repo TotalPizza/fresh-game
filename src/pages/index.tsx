@@ -11,12 +11,23 @@ import DarkMode from '@/components/dark_mode'
 import CursorItem from '@/components/cursor_item'
 import { Protocol } from '@/hooks/protocol_list'
 import { BuildItem } from '@/components/cursor_item'
+import ConstructedBuildings from '@/components/buildings'
+
+export interface BuildingPlacement {
+    x: number,
+    y: number,
+    src: string,
+    width: number,
+    height: number,
+    click_event: () => void,
+}
 
 export default function Home() {
   const [selected_building, set_selected_building] = useState<BuildItem>({src: '', width: 0, height: 0})
   const [show_farmer_menu, set_show_farmer_menu] = useState(false)
   const [dark_mode, set_dark_mode] = useState(false)
   const [show_build_menu, set_show_build_menu] = useState(false)
+  const [buildings, set_buildings] = useState<BuildingPlacement[]>([]);
   const {account, address, status} = useAccount();
 
   const toggle_farm_menu = () => {
@@ -39,6 +50,7 @@ export default function Home() {
     set_selected_building(item);
   }
   function place_building(x: number, y: number) {
+    set_buildings([...buildings, {x: x, y: y, src: selected_building.src, width: selected_building.width, height: selected_building.height, click_event: toggle_farm_menu}]);
     set_selected_building({src: '', width: 300, height: 300});
   }
 
@@ -46,6 +58,7 @@ export default function Home() {
     <>
       <body>
         <Background dark_mode={dark_mode}/>
+        <ConstructedBuildings buildings={buildings}/>
         <LeftMenuBar toggle_build_menu={toggle_build_menu} toggle_farm_menu={toggle_farm_menu}/>
         <FarmValueDisplay/>
         <FarmMenu show={show_farmer_menu} toggle_farm_menu={toggle_farm_menu} select_farm={select_farm}/>

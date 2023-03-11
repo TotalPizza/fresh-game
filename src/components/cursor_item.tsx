@@ -14,8 +14,6 @@ export default function CursorItem(props: {item_image: BuildItem, place_building
     useEffect(() => {
         const handleMouseMove = (event:any) => {
           setMousePos({ x: event.clientX, y: event.clientY });
-          console.log("Mouse Pos X:", event.clientX);
-          console.log("Mouse Pos Y:", event.clientY);
         };
     
         window.addEventListener('mousemove', handleMouseMove);
