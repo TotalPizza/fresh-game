@@ -4,8 +4,9 @@ import styles from '@/styles/components/menu.module.css'
 import XButton from './x_button'
 import {tokens} from '@/hooks/token_list'
 import {protocols, Protocol} from '@/hooks/protocol_list'	
+import { BuildItem } from '@/components/cursor_item'
 
-export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => void, select_farm: (farm: Protocol) => void}) {
+export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => void, placing_field: () => void}) {
     let [selected_token, set_selected_token] = useState("");
     
     return (
@@ -22,7 +23,7 @@ export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => 
             <table className={styles.fields_table}>
                 <tbody>
                     <br/>
-                    <FieldsList token_name={selected_token} select_farm={props.select_farm}/>
+                    <FieldsList token_name={selected_token} placing_field={props.placing_field}/>
                 </tbody>
             </table>
             <div className={styles.fields_heading}>Fields</div>
@@ -58,7 +59,7 @@ function SeedsList(props:{set_selected_token: (token_name: string) => void}) {
     )
 }
 
-function FieldsList(props:{token_name: string, select_farm: (farm: Protocol) => void}){
+function FieldsList(props:{token_name: string, placing_field: () => void}){
     let fields: JSX.Element[] = [];
     let valid_protocols: Protocol[] = [];
     if (props.token_name === ""){
@@ -76,12 +77,15 @@ function FieldsList(props:{token_name: string, select_farm: (farm: Protocol) => 
     });
     valid_protocols.forEach(protocol => {
         fields.push(
-            <tr className={styles.fields_row} onClick={()=>props.select_farm(protocol)}>
+            <tr className={styles.fields_row} onClick={() => props.placing_field()}>
                 <td className={styles.fields_col}>
                     <Image className={styles.asset_icon} alt={protocol.name} src={protocol.src} width={80} height={80}/>
                 </td>
                 <td className={styles.fields_col}>
-                    {protocol.name}
+                    {0.001}
+                </td>
+                <td className={styles.fields_col}>
+                    {"1% APY"}
                 </td>
             </tr>
         ) 

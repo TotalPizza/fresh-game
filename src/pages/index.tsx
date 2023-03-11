@@ -41,16 +41,20 @@ export default function Home() {
   const toggle_dark_mode = () => {
     set_dark_mode(!dark_mode);
   }
-  function select_farm(farm: Protocol) {
-    toggle_farm_menu();
-    set_selected_building({src: farm.src, width: 50, height: 50});
-  }
   function placing_building(item: BuildItem) {
     toggle_build_menu();
     set_selected_building(item);
   }
+  function placing_field() {
+    toggle_farm_menu();
+    set_selected_building({src:"/images/field.png",width:250,height:250});
+  }
   function place_building(x: number, y: number) {
-    set_buildings([...buildings, {x: x, y: y, src: selected_building.src, width: selected_building.width, height: selected_building.height, click_event: toggle_farm_menu}]);
+    let click_event = () => {};
+    if (selected_building.src == '/images/mill.png'){
+      click_event = toggle_farm_menu;
+    }
+    set_buildings([...buildings, {x: x, y: y, src: selected_building.src, width: selected_building.width, height: selected_building.height, click_event: click_event}]);
     set_selected_building({src: '', width: 300, height: 300});
   }
 
@@ -61,7 +65,7 @@ export default function Home() {
         <ConstructedBuildings buildings={buildings}/>
         <LeftMenuBar toggle_build_menu={toggle_build_menu} toggle_farm_menu={toggle_farm_menu}/>
         <FarmValueDisplay/>
-        <FarmMenu show={show_farmer_menu} toggle_farm_menu={toggle_farm_menu} select_farm={select_farm}/>
+        <FarmMenu show={show_farmer_menu} toggle_farm_menu={toggle_farm_menu} placing_field={placing_field}/>
         <BuildMenu show={show_build_menu} toggle_build_menu={toggle_build_menu} placing_building={placing_building}/>
         <DarkMode dark_mode={dark_mode} toggle_dark_mode={toggle_dark_mode}/>
         <TownHall/>
