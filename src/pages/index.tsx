@@ -25,7 +25,8 @@ export interface BuildingPlacement {
 
 export default function Home() {
   const [selected_building, set_selected_building] = useState<BuildItem>({building: BuildType.None, src: '', width: 0, height: 0})
-  const [instructions, set_instructions] = useState<Instruction[]>([{action: Action.Lend, context:{amount: '0.001', token: 'USDC', protocol: Protocol.Nostra}}])
+  const [temp_instruction_info, set_temp_instruction_info] = useState<any>({})
+  const [instructions, set_instructions] = useState<Instruction[]>([])
   const [show_farmer_menu, set_show_farmer_menu] = useState(false)
   const [dark_mode, set_dark_mode] = useState(false)
   const [show_build_menu, set_show_build_menu] = useState(false)
@@ -47,15 +48,20 @@ export default function Home() {
     toggle_build_menu();
     set_selected_building(item);
   }
-  function placing_field() {
+  function placing_field(protocol: Protocol, amount: string, token: string) {
     toggle_farm_menu();
     set_selected_building({building: BuildType.Field,src:"/images/field.png",width:250,height:250});
-    set_instructions([...instructions, {action: Action.Lend, context: {amount: 1, token: 'USDC', protocol: Protocol.Nostra}}]);
+    set_temp_instruction_info({protocol: protocol, amount: amount, token: token});
   }
   function place_building(x: number, y: number) {
     let click_event = () => {};
     if (selected_building.building == BuildType.Mill){
       click_event = toggle_farm_menu;
+    }
+    if (selected_building.building == BuildType.Field){
+      set_instructions([...instructions, {action: Action.Lend, context: temp_instruction_info}]);
+      set_temp_instruction_info({});
+      click_event = ()=>{};
     }
     set_buildings([...buildings, {x: x, y: y, src: selected_building.src, width: selected_building.width, height: selected_building.height, click_event: click_event}]);
     set_selected_building({building: BuildType.None, src: '', width: 300, height: 300});

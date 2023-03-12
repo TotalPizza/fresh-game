@@ -5,6 +5,12 @@ import { Call } from '@/utils/interfaces';
 import { Instruction, Action } from '@/utils/interfaces'
 import { protocol_lend_action } from '@/hooks/action_list'
 
+interface ActionDisplay{
+    action_name: string,
+    amount: string,
+    token: string,
+}
+
 export function ActionsBar(props:{instructions: Instruction[]}){
 
     let calls: Call = {
@@ -13,49 +19,41 @@ export function ActionsBar(props:{instructions: Instruction[]}){
         calldata: [],
     }
 
-    let actions: JSX.Element[] = [];
+    let actions: string[] = [];
     props.instructions.forEach((instruction) => {
-        let action_name = "";
-        let lend_amount = "";
-        let token = "";
+        console.log("INSTRUCTION");
         switch(instruction.action){
             case Action.Lend:
-                action_name = (protocol_lend_action[instruction.context.protocol]);
-                lend_amount = instruction.context.amount;
-                token = instruction.context.token;
+                actions.push(
+                    protocol_lend_action[instruction.context.protocol], 
+                    instruction.context.amount + ' ' + instruction.context.token
+                )
                 break;
             case Action.Transfer:
-                action_name = "IMPLEMENT THIS";
+                actions.push(
+                    "IMPLEMENT TRANSFER", 
+                    instruction.context.amount + ' ' + instruction.context.token
+                )
                 break;
         }
-        actions.push(
-            <tr>
-                <tr className={styles.action_row_one}>
-                    <td className={styles.action_column}>
-                        <div>{action_name}</div>
-                    </td>
-                </tr>
-            <tr className={styles.action_row_two}>
-                <td className={styles.action_column}>
-                    <div>{lend_amount + ' ' + token}</div>
-                </td>
-            </tr>
-        </tr>
-            
-        )
     });
-
 
     return (
         <>
             <div className={styles.actions_bar_heading}>Actions</div>
-            {actions.map((data) => {
-                return(
-                    <table className={styles.action_table}>
-                        {data}
-                    </table>
-                )
-            })}
+            <table className={styles.action_table}>
+                <tbody className={styles.action_tbody}>
+                    {actions.map((data, index) => {
+                        return(
+                            <tr className={styles.action_row_two}>          
+                                <td className={styles.action_column}>
+                                    <div>{data}</div>
+                                </td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
             <Image className={styles.actions_bar_banner} alt={"actions_bar"} src={'/images/actions_bar_banner.png'} width={238} height={900}/>   
             <ExecuteTransactions calls={[calls]}/>  
         </>

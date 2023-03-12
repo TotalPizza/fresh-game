@@ -15,6 +15,11 @@ export enum Protocol{
     Yagi,
 }
 
+export enum Token{
+    ETH,
+    USDC,
+}
+
 export interface LendContext{
     amount: string,
     token: string,

@@ -2,12 +2,12 @@ import {useState} from 'react'
 import Image from 'next/image'
 import styles from '@/styles/components/menu.module.css'
 import XButton from './x_button'
-import {tokens} from '@/hooks/token_list'
-import {protocols, Protocol} from '@/hooks/protocol_list'	
-import { BuildItem } from '@/components/cursor_item'
+import {tokens, token_name} from '@/hooks/token_list'
+import {protocols, protocol_name, protocol_farm_icon} from '@/hooks/protocol_list'	
+import {Protocol, Token} from '@/utils/interfaces'
 
-export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => void, placing_field: () => void}) {
-    let [selected_token, set_selected_token] = useState("");
+export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => void, placing_field: (protocol: Protocol, amount: string, token: string) => void}) {
+    let [selected_token, set_selected_token] = useState<Token>(Token.ETH);
     
     return (
         <div className={styles.menu} hidden={!props.show}>
@@ -23,7 +23,7 @@ export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => 
             <table className={styles.fields_table}>
                 <tbody>
                     <br/>
-                    <FieldsList token_name={selected_token} placing_field={props.placing_field}/>
+                    <FieldsList token={selected_token} placing_field={props.placing_field}/>
                 </tbody>
             </table>
             <div className={styles.fields_heading}>Fields</div>
@@ -31,11 +31,11 @@ export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => 
     )
 }
 
-function SeedsList(props:{set_selected_token: (token_name: string) => void}) {
+function SeedsList(props:{set_selected_token: (token: Token) => void}) {
     let seeds: JSX.Element[] = [];
     tokens.forEach(token => {
         seeds.push(
-            <tr className={styles.seeds_row} onClick={()=>props.set_selected_token(token.name)}>
+            <tr className={styles.seeds_row} onClick={()=>props.set_selected_token(token.token)}>
                 <td className={styles.seeds_col}>
                     <Image className={styles.asset_icon} alt={token.name} src={token.src} width={80} height={80}/>
                 </td>
@@ -59,30 +59,30 @@ function SeedsList(props:{set_selected_token: (token_name: string) => void}) {
     )
 }
 
-function FieldsList(props:{token_name: string, placing_field: () => void}){
+function FieldsList(props:{token: Token, placing_field: (protocol: Protocol, amount: string, token: string) => void}){
     let fields: JSX.Element[] = [];
     let valid_protocols: Protocol[] = [];
-    if (props.token_name === ""){
+    if (props.token === undefined){
         return(
             <>
             </>
         )
     }
-    protocols.forEach(token => {
-        if (token.name === props.token_name){
-            token.protocols.forEach(protocol => {
+    protocols.forEach(protocol => {
+        if (protocol.token === props.token){
+            protocol.protocols.forEach(protocol => {
                 valid_protocols.push(protocol);
             })
         }
     });
     valid_protocols.forEach(protocol => {
         fields.push(
-            <tr className={styles.fields_row} onClick={() => props.placing_field()}>
+            <tr className={styles.fields_row} onClick={() => props.placing_field(protocol,"0.001",token_name[props.token])}>
                 <td className={styles.fields_col}>
-                    <Image className={styles.asset_icon} alt={protocol.name} src={protocol.src} width={80} height={80}/>
+                    <Image className={styles.asset_icon} alt={protocol_name[protocol]} src={protocol_farm_icon[protocol]} width={80} height={80}/>
                 </td>
                 <td className={styles.fields_col}>
-                    {0.001}
+                    {"0.001"}
                 </td>
                 <td className={styles.fields_col}>
                     {"1% APY"}
