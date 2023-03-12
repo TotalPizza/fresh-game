@@ -11,6 +11,8 @@ import DarkMode from '@/components/dark_mode'
 import CursorItem from '@/components/cursor_item'
 import { BuildItem, BuildType } from '@/components/cursor_item'
 import ConstructedBuildings from '@/components/buildings'
+import { Instruction, Action, LendContext, Protocol} from '@/utils/interfaces'
+import { ActionsBar } from '@/components/actions_bar'
 
 export interface BuildingPlacement {
     x: number,
@@ -23,6 +25,7 @@ export interface BuildingPlacement {
 
 export default function Home() {
   const [selected_building, set_selected_building] = useState<BuildItem>({building: BuildType.None, src: '', width: 0, height: 0})
+  const [instructions, set_instructions] = useState<Instruction[]>([])
   const [show_farmer_menu, set_show_farmer_menu] = useState(false)
   const [dark_mode, set_dark_mode] = useState(false)
   const [show_build_menu, set_show_build_menu] = useState(false)
@@ -47,6 +50,7 @@ export default function Home() {
   function placing_field() {
     toggle_farm_menu();
     set_selected_building({building: BuildType.Field,src:"/images/field.png",width:250,height:250});
+    set_instructions([...instructions, {action: Action.Lend, context: {amount: 1, token: 'USDC', protocol: Protocol.Nostra}}]);
   }
   function place_building(x: number, y: number) {
     let click_event = () => {};
@@ -61,6 +65,7 @@ export default function Home() {
     <>
       <body>
         <Background dark_mode={dark_mode}/>
+        <ActionsBar/>
         <ConstructedBuildings buildings={buildings}/>
         <LeftMenuBar toggle_build_menu={toggle_build_menu} toggle_farm_menu={toggle_farm_menu}/>
         <FarmValueDisplay/>

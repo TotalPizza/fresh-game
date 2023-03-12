@@ -33,9 +33,10 @@
 
 .value_text{
     position: relative;
+    font-family: castellar;
+    font-size: 18px;
     color: black;
-    margin-left: 110%;
-    margin-top: 8px;
-    font: 20px Arial;
+    margin-left: 100%;
+    margin-top: 6px;
     z-index: 3;
 }

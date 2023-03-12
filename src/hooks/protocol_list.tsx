@@ -23,3 +23,13 @@ export const protocols = [
         ]
     }
 ];
+
+export const protocol_addresses = [
+    "0x", // Nostra
+    "0x" // Yagi
+]
+
+export const protocol_lend_entry_points = [
+    "mint", // Nostra
+    "mint" // Yagi
+]

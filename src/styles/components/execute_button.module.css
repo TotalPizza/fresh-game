@@ -1,0 +1,41 @@
+.execute_button{
+    position: fixed;
+    right: 44px;
+    bottom: 60px;
+    z-index: 9;
+}
+
+.execute_button_hover{
+    position: fixed;
+    right: 44px;
+    bottom: 60px;
+    opacity: 0;
+    z-index: 9;
+}
+.execute_button_hover:hover{
+    position: fixed;
+    right: 44px;
+    bottom: 60px;
+    opacity: 1;
+    cursor: pointer;
+    z-index: 9;
+}
+
+.execute_button_frame{
+    position: fixed;
+    right: 44px;
+    bottom: 55px;
+    pointer-events: none;
+    z-index: 9;
+}
+
+.execute_button_text{
+    position: fixed;
+    font-family: castellar;
+    color: rgb(233, 206, 52);
+    font-size: 25px;
+    right: 61px;
+    bottom: 73px;
+    pointer-events: none;
+    z-index: 9;
+}
