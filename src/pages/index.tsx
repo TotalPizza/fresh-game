@@ -11,7 +11,7 @@ import DarkMode from '@/components/dark_mode'
 import CursorItem from '@/components/cursor_item'
 import { BuildItem, BuildType } from '@/components/cursor_item'
 import ConstructedBuildings from '@/components/buildings'
-import { Instruction, Action, LendContext, Protocol, Token} from '@/utils/interfaces'
+import { Instruction, Action, Protocol, Token} from '@/utils/interfaces'
 import { ActionsBar } from '@/components/actions_bar'
 
 export interface BuildingPlacement {
@@ -31,6 +31,7 @@ export default function Home() {
   const [dark_mode, set_dark_mode] = useState(false)
   const [show_build_menu, set_show_build_menu] = useState(false)
   const [buildings, set_buildings] = useState<BuildingPlacement[]>([]);
+  const [building_status, set_building_status] = useState<boolean[]>([false]);
   const {account, address, status} = useAccount();
 
   const pop_instructions = () => {
@@ -66,6 +67,10 @@ export default function Home() {
     let click_event = () => {};
     if (selected_building.building == BuildType.Mill){
       click_event = toggle_farm_menu;
+      // Mark building as being built. Prevents another one from being built
+      let new_building_status = [...building_status];
+      new_building_status[0] = true;
+      set_building_status(new_building_status);
     }
     if (selected_building.building == BuildType.Field){
       set_instructions([...instructions, {action: Action.Lend, context: temp_instruction_info}]);
@@ -85,7 +90,7 @@ export default function Home() {
         <LeftMenuBar toggle_build_menu={toggle_build_menu} toggle_farm_menu={toggle_farm_menu}/>
         <FarmValueDisplay/>
         <FarmMenu show={show_farmer_menu} toggle_farm_menu={toggle_farm_menu} placing_field={placing_field}/>
-        <BuildMenu show={show_build_menu} toggle_build_menu={toggle_build_menu} placing_building={placing_building}/>
+        <BuildMenu building_status={building_status} show={show_build_menu} toggle_build_menu={toggle_build_menu} placing_building={placing_building}/>
         <DarkMode dark_mode={dark_mode} toggle_dark_mode={toggle_dark_mode}/>
         <TownHall/>
         <WalletButton account={account}/>

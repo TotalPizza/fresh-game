@@ -19,13 +19,19 @@
     z-index: 5;
 }
 
+.building_icon_disabled{
+    position: fixed;
+    margin-left: 110px;
+    margin-top: 200px;
+    z-index: 5;
+}
+
 .building_icon_frame{
     position: fixed;
     margin-left: 110px;
     margin-top: 200px;
     z-index: 6;
 }
-
 
 .building_icon_frame_hover{
     position: fixed;
