@@ -25,7 +25,7 @@ export interface BuildingPlacement {
 
 export default function Home() {
   const [selected_building, set_selected_building] = useState<BuildItem>({building: BuildType.None, src: '', width: 0, height: 0})
-  const [instructions, set_instructions] = useState<Instruction[]>([])
+  const [instructions, set_instructions] = useState<Instruction[]>([{action: Action.Lend, context:{amount: '0.001', token: 'USDC', protocol: Protocol.Nostra}}])
   const [show_farmer_menu, set_show_farmer_menu] = useState(false)
   const [dark_mode, set_dark_mode] = useState(false)
   const [show_build_menu, set_show_build_menu] = useState(false)
@@ -65,7 +65,7 @@ export default function Home() {
     <>
       <body>
         <Background dark_mode={dark_mode}/>
-        <ActionsBar/>
+        <ActionsBar instructions={instructions}/>
         <ConstructedBuildings buildings={buildings}/>
         <LeftMenuBar toggle_build_menu={toggle_build_menu} toggle_farm_menu={toggle_farm_menu}/>
         <FarmValueDisplay/>

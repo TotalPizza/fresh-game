@@ -15,3 +15,23 @@
     top: 10px;
     z-index: 9;
 }
+
+.action_table{
+    position: fixed;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(243, 188, 85);
+    font-size: large;
+    right: 50px;
+    border-top: solid 4px rgba(224, 197, 139, 0.555);
+    width: 150px;
+    top: 100px;
+    z-index: 10;
+}
+
+.action_row_one{
+    
+}
+
+.action_row_two{
+    border-bottom: solid 4px rgba(224, 197, 139, 0.555);
+}

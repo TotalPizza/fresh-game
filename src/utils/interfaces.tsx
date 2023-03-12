@@ -16,7 +16,7 @@ export enum Protocol{
 }
 
 export interface LendContext{
-    amount: number,
+    amount: string,
     token: string,
     protocol: Protocol,
 }
