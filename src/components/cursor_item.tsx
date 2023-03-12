@@ -2,7 +2,15 @@ import Image from 'next/image'
 import {useEffect, useState} from 'react'
 import styles from '@/styles/components/cursor_item.module.css'
 
+export enum BuildType{
+    None,
+    Mill,
+    Field,
+    Market,
+}
+
 export interface BuildItem{
+    building: BuildType,
     src: string;
     width: number;
     height: number;

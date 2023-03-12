@@ -9,8 +9,7 @@ import TownHall from '@/components/town_hall'
 import WalletButton from '@/components/wallet'
 import DarkMode from '@/components/dark_mode'
 import CursorItem from '@/components/cursor_item'
-import { Protocol } from '@/hooks/protocol_list'
-import { BuildItem } from '@/components/cursor_item'
+import { BuildItem, BuildType } from '@/components/cursor_item'
 import ConstructedBuildings from '@/components/buildings'
 
 export interface BuildingPlacement {
@@ -23,7 +22,7 @@ export interface BuildingPlacement {
 }
 
 export default function Home() {
-  const [selected_building, set_selected_building] = useState<BuildItem>({src: '', width: 0, height: 0})
+  const [selected_building, set_selected_building] = useState<BuildItem>({building: BuildType.None, src: '', width: 0, height: 0})
   const [show_farmer_menu, set_show_farmer_menu] = useState(false)
   const [dark_mode, set_dark_mode] = useState(false)
   const [show_build_menu, set_show_build_menu] = useState(false)
@@ -47,15 +46,15 @@ export default function Home() {
   }
   function placing_field() {
     toggle_farm_menu();
-    set_selected_building({src:"/images/field.png",width:250,height:250});
+    set_selected_building({building: BuildType.Field,src:"/images/field.png",width:250,height:250});
   }
   function place_building(x: number, y: number) {
     let click_event = () => {};
-    if (selected_building.src == '/images/mill.png'){
+    if (selected_building.building == BuildType.Mill){
       click_event = toggle_farm_menu;
     }
     set_buildings([...buildings, {x: x, y: y, src: selected_building.src, width: selected_building.width, height: selected_building.height, click_event: click_event}]);
-    set_selected_building({src: '', width: 300, height: 300});
+    set_selected_building({building: BuildType.None, src: '', width: 300, height: 300});
   }
 
   return (
