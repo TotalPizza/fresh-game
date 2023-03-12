@@ -12,7 +12,7 @@ interface ActionDisplay{
     border: number,
 }
 
-export function ActionsBar(props:{account_address: string|undefined, instructions: Instruction[]}){
+export function ActionsBar(props:{account_address: string|undefined, instructions: Instruction[], clear_instructions: () => void}){
 
     let actions: ActionDisplay[] = [];
     props.instructions.forEach((instruction) => {
@@ -59,7 +59,7 @@ export function ActionsBar(props:{account_address: string|undefined, instruction
                 </tbody>
             </table>
             <Image className={styles.actions_bar_banner} alt={"actions_bar"} src={'/images/actions_bar_banner.png'} width={238} height={900}/>   
-            <ExecuteTransactions calls={calls}/>  
+            <ExecuteTransactions calls={calls} clear_instructions={props.clear_instructions}/>  
         </>
     )
 }

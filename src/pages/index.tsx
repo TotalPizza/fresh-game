@@ -33,6 +33,15 @@ export default function Home() {
   const [buildings, set_buildings] = useState<BuildingPlacement[]>([]);
   const {account, address, status} = useAccount();
 
+  const pop_instructions = () => {
+    // remove last entry of instructions
+    let new_instructions = [...instructions];
+    new_instructions.pop();
+    set_instructions(new_instructions);
+  }
+  const clear_instructions = () => {
+    set_instructions([]);
+  }
   const toggle_farm_menu = () => {
     set_show_farmer_menu(!show_farmer_menu);
     set_show_build_menu(false);
@@ -71,7 +80,7 @@ export default function Home() {
     <>
       <body>
         <Background dark_mode={dark_mode}/>
-        <ActionsBar account_address={address} instructions={instructions}/>
+        <ActionsBar account_address={address} instructions={instructions} clear_instructions={clear_instructions}/>
         <ConstructedBuildings buildings={buildings}/>
         <LeftMenuBar toggle_build_menu={toggle_build_menu} toggle_farm_menu={toggle_farm_menu}/>
         <FarmValueDisplay/>
