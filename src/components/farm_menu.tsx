@@ -6,7 +6,7 @@ import {tokens, token_name} from '@/hooks/token_list'
 import {protocols, protocol_name, protocol_farm_icon} from '@/hooks/protocol_list'	
 import {Protocol, Token} from '@/utils/interfaces'
 
-export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => void, placing_field: (protocol: Protocol, amount: string, token: string) => void}) {
+export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => void, placing_field: (protocol: Protocol, amount: string, token: Token) => void}) {
     let [selected_token, set_selected_token] = useState<Token>(Token.ETH);
     
     return (
@@ -59,7 +59,7 @@ function SeedsList(props:{set_selected_token: (token: Token) => void}) {
     )
 }
 
-function FieldsList(props:{token: Token, placing_field: (protocol: Protocol, amount: string, token: string) => void}){
+function FieldsList(props:{token: Token, placing_field: (protocol: Protocol, amount: string, token: Token) => void}){
     let fields: JSX.Element[] = [];
     let valid_protocols: Protocol[] = [];
     if (props.token === undefined){
@@ -77,7 +77,7 @@ function FieldsList(props:{token: Token, placing_field: (protocol: Protocol, amo
     });
     valid_protocols.forEach(protocol => {
         fields.push(
-            <tr className={styles.fields_row} onClick={() => props.placing_field(protocol,"0.001",token_name[props.token])}>
+            <tr className={styles.fields_row} onClick={() => props.placing_field(protocol,"0.001",props.token)}>
                 <td className={styles.fields_col}>
                     <Image className={styles.asset_icon} alt={protocol_name[protocol]} src={protocol_farm_icon[protocol]} width={80} height={80}/>
                 </td>

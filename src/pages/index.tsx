@@ -11,7 +11,7 @@ import DarkMode from '@/components/dark_mode'
 import CursorItem from '@/components/cursor_item'
 import { BuildItem, BuildType } from '@/components/cursor_item'
 import ConstructedBuildings from '@/components/buildings'
-import { Instruction, Action, LendContext, Protocol} from '@/utils/interfaces'
+import { Instruction, Action, LendContext, Protocol, Token} from '@/utils/interfaces'
 import { ActionsBar } from '@/components/actions_bar'
 
 export interface BuildingPlacement {
@@ -48,7 +48,7 @@ export default function Home() {
     toggle_build_menu();
     set_selected_building(item);
   }
-  function placing_field(protocol: Protocol, amount: string, token: string) {
+  function placing_field(protocol: Protocol, amount: string, token: Token) {
     toggle_farm_menu();
     set_selected_building({building: BuildType.Field,src:"/images/field.png",width:250,height:250});
     set_temp_instruction_info({protocol: protocol, amount: amount, token: token});
@@ -71,7 +71,7 @@ export default function Home() {
     <>
       <body>
         <Background dark_mode={dark_mode}/>
-        <ActionsBar instructions={instructions}/>
+        <ActionsBar account_address={address} instructions={instructions}/>
         <ConstructedBuildings buildings={buildings}/>
         <LeftMenuBar toggle_build_menu={toggle_build_menu} toggle_farm_menu={toggle_farm_menu}/>
         <FarmValueDisplay/>

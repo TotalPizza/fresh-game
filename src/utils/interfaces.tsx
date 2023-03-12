@@ -22,7 +22,7 @@ export enum Token{
 
 export interface LendContext{
     amount: string,
-    token: string,
+    token: Token,
     protocol: Protocol,
 }
 

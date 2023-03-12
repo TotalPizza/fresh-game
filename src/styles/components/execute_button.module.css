@@ -21,6 +21,14 @@
     z-index: 9;
 }
 
+.execute_actions_disabled{
+    position: fixed;
+    right: 44px;
+    bottom: 60px;
+    cursor: pointer;
+    z-index: 9;
+}
+
 .execute_button_frame{
     position: fixed;
     right: 44px;
