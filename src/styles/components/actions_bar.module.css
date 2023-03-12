@@ -30,12 +30,9 @@
 
 .action_tbody{
     position: relative;
-    border-bottom: solid 4px rgba(224, 197, 139, 0.555);
 }
 
 .action_row_one{
-    position: relative;
-    margin-top: 10px;
 }
 
 .action_row_two{

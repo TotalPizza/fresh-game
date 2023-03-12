@@ -1,5 +1,6 @@
 import { useConnectors } from '@starknet-react/core'
 import styles from '@/styles/components/wallet_selection.module.css'
+import Image from 'next/image'
 
 export function WalletSelection(props: {handleClose: () => void, setWalletType: (wallet_name: string) => void}) {
 
@@ -10,7 +11,7 @@ export function WalletSelection(props: {handleClose: () => void, setWalletType: 
     return (
       <div className={styles.bodyText}>
         <p>You do not have a wallet extension installed.</p>
-        <img className={styles.sad_image} src='./images/sad_pepe.png'/>
+        <Image className={styles.sad_image} src='/images/sad_pepe.png ' alt={"sad_image"} width={75} height={75}/>
       </div>
     )
   }

@@ -6,9 +6,8 @@ import { Instruction, Action } from '@/utils/interfaces'
 import { protocol_lend_action } from '@/hooks/action_list'
 
 interface ActionDisplay{
-    action_name: string,
-    amount: string,
-    token: string,
+    action_info: string,
+    border: number,
 }
 
 export function ActionsBar(props:{instructions: Instruction[]}){
@@ -19,21 +18,24 @@ export function ActionsBar(props:{instructions: Instruction[]}){
         calldata: [],
     }
 
-    let actions: string[] = [];
+    let actions: ActionDisplay[] = [];
     props.instructions.forEach((instruction) => {
-        console.log("INSTRUCTION");
         switch(instruction.action){
             case Action.Lend:
-                actions.push(
-                    protocol_lend_action[instruction.context.protocol], 
-                    instruction.context.amount + ' ' + instruction.context.token
-                )
+                actions.push({
+                    action_info: protocol_lend_action[instruction.context.protocol], border: 0
+                }, 
+                {
+                    action_info: instruction.context.amount + ' ' + instruction.context.token, border: 4
+                })
                 break;
             case Action.Transfer:
-                actions.push(
-                    "IMPLEMENT TRANSFER", 
-                    instruction.context.amount + ' ' + instruction.context.token
-                )
+                actions.push({
+                    action_info: "Implement Transfer!!!", border: 0
+                }, 
+                {
+                    action_info: instruction.context.amount + ' ' + instruction.context.token, border: 4
+                })
                 break;
         }
     });
@@ -45,9 +47,9 @@ export function ActionsBar(props:{instructions: Instruction[]}){
                 <tbody className={styles.action_tbody}>
                     {actions.map((data, index) => {
                         return(
-                            <tr className={styles.action_row_two}>          
+                            <tr key={index} style={{borderBottomStyle: 'solid', borderBottomWidth: data.border+'px', borderBottomColor: 'rgba(224, 197, 139, 0.555)'}}>          
                                 <td className={styles.action_column}>
-                                    <div>{data}</div>
+                                    <div>{data.action_info}</div>
                                 </td>
                             </tr>
                         )
