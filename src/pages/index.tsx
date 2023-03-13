@@ -60,7 +60,7 @@ export default function Home() {
   }
   function placing_field(protocol: Protocol, amount: string, token: Token) {
     toggle_farm_menu();
-    set_selected_building({building: BuildType.Field,src:"/images/field.png",width:250,height:250});
+    set_selected_building({building: BuildType.Field,src:"/images/field_white.png",width:250,height:250});
     set_temp_instruction_info({protocol: protocol, amount: amount, token: token});
   }
   function place_building(x: number, y: number) {
@@ -77,7 +77,8 @@ export default function Home() {
       set_temp_instruction_info({});
       click_event = ()=>{};
     }
-    set_buildings([...buildings, {x: x, y: y, src: selected_building.src, width: selected_building.width, height: selected_building.height, click_event: click_event}]);
+    // We always remove the last 5 characters which are _white.png
+    set_buildings([...buildings, {x: x, y: y, src: selected_building.src.substring(0, selected_building.src.length-10)+'.png', width: selected_building.width, height: selected_building.height, click_event: click_event}]);
     set_selected_building({building: BuildType.None, src: '', width: 300, height: 300});
   }
 

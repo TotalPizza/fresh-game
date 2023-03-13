@@ -15,7 +15,7 @@ export default function BuildMenu(props: {building_status: boolean[],show: boole
                     if(props.building_status[0]){
                         return;
                     }else{
-                        props.placing_building({building: BuildType.Mill, src:'/images/mill.png', width: 300, height: 300})
+                        props.placing_building({building: BuildType.Mill, src:'/images/mill_white.png', width: 300, height: 300})
                     };
                 }}  alt={"mill_icon_frame_hover"} src='/images/frame_hovered.png' width={109} height={109}/>
             <Image className={styles.building_icon} alt={"mill_icon"} src='/images/nostra_mill_icon.png' width={100} height={100}/>
