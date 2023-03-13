@@ -10,7 +10,6 @@ export function InstructionToTX(account_address: string, instructions: Instructi
     instructions.forEach((instruction) => {
         switch(instruction.action){
             case Action.Lend:	
-                console.log(ethers.parseUnits(instruction.context.amount,token_decimals[instruction.context.token]).toString());
                 calls.push({
                     contractAddress: token_addresses[instruction.context.token],
                     entrypoint: "approve",
@@ -18,7 +17,6 @@ export function InstructionToTX(account_address: string, instructions: Instructi
                 })
                 calls.push(build_lend_transaction(account_address,instruction.context));
             case Action.Unlend:
-                console.log("Unlend");
         }
     });
     return calls;

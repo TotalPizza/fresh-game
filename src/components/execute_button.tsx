@@ -4,7 +4,6 @@ import Image from 'next/image'
 import styles from '@/styles/components/execute_button.module.css'
 
 export function ExecuteTransactions(props: {calls: Call[], clear_instructions: () => void}){
-    console.log(props.calls);
     const { data, loading, error, reset, execute } = useStarknetExecute({
         calls: props.calls,
         metadata: [] 

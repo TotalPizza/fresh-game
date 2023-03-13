@@ -30,7 +30,7 @@ export default function Home() {
   const [show_farmer_menu, set_show_farmer_menu] = useState(false)
   const [dark_mode, set_dark_mode] = useState(false)
   const [show_build_menu, set_show_build_menu] = useState(false)
-  const [buildings, set_buildings] = useState<BuildingPlacement[]>([]);
+  const [buildings, set_buildings] = useState<BuildingPlacement[]>([{x: 500, y: 250, src: '/images/town_hall.png', width: 417, height: 249, click_event: ()=>{}}]);
   const [building_status, set_building_status] = useState<boolean[]>([false]);
   const {account, address, status} = useAccount();
 
@@ -78,7 +78,8 @@ export default function Home() {
       click_event = ()=>{};
     }
     // We always remove the last 5 characters which are _white.png
-    set_buildings([...buildings, {x: x, y: y, src: selected_building.src.substring(0, selected_building.src.length-10)+'.png', width: selected_building.width, height: selected_building.height, click_event: click_event}]);
+    console.log({x: x, y: y, src: selected_building.src.substring(0, selected_building.src.length-10)+'.png', width: selected_building.width, height: selected_building.height})
+    set_buildings([...buildings, {x: y, y: x, src: selected_building.src.substring(0, selected_building.src.length-10)+'.png', width: selected_building.width, height: selected_building.height, click_event: click_event}]);
     set_selected_building({building: BuildType.None, src: '', width: 300, height: 300});
   }
 
@@ -93,9 +94,8 @@ export default function Home() {
         <FarmMenu show={show_farmer_menu} toggle_farm_menu={toggle_farm_menu} placing_field={placing_field}/>
         <BuildMenu building_status={building_status} show={show_build_menu} toggle_build_menu={toggle_build_menu} placing_building={placing_building}/>
         <DarkMode dark_mode={dark_mode} toggle_dark_mode={toggle_dark_mode}/>
-        <TownHall/>
         <WalletButton account={account}/>
-        <CursorItem item_image={selected_building} place_building={place_building}/>
+        <CursorItem item_image={selected_building} place_building={place_building} buildings={buildings}/>
       </body>
     </>
   )
