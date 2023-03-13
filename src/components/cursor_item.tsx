@@ -61,8 +61,8 @@ export default function CursorItem(props: {item_image: BuildItem, place_building
         // TODO: We are doing a lot of string manipulation here....probably want to change this
         return(
             <>
-                <Image className={styles.curso_image} alt={'cursor_image'} style={{top: y, left: x}} src={props.item_image.src} width={props.item_image.width} height={props.item_image.height}/>
-                <Image className={styles.curso_image} onClick={() => {
+                <Image className={styles.curso_image} priority={true} alt={'cursor_image'} style={{top: y, left: x}} src={props.item_image.src} width={props.item_image.width} height={props.item_image.height}/>
+                <Image className={styles.curso_image} priority={true} onClick={() => {
                     if(is_overlapping_buildings){
                         return;
                     };
