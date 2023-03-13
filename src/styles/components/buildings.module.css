@@ -1,4 +1,19 @@
 .buildings{
     position: absolute;
+
+    pointer-events: none;
+}
+
+.highlight{
+    position: absolute;
+    z-index: 4;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.highlight:hover{
+    position: absolute;
+    opacity: 1;
+    z-index: 4;
     cursor: pointer;
 }

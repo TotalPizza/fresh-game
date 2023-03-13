@@ -12,6 +12,7 @@ import { BuildItem, BuildType } from '@/components/cursor_item'
 import ConstructedBuildings from '@/components/buildings'
 import { Instruction, Action, Protocol, Token} from '@/utils/interfaces'
 import { ActionsBar } from '@/components/actions_bar'
+import Image from 'next/image'
 
 export interface BuildingPlacement {
     x: number,
