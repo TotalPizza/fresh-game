@@ -38,7 +38,6 @@ export default function CursorItem(props: {item_image: BuildItem, place_building
 
     // Check if the cursor is over any of the buildings
     const is_overlapping_buildings = IsOverlappingWithExistingBuilding(mousePos.y, mousePos.x, props.buildings);
-    console.log("Is overlapping: ", is_overlapping_buildings);
     if (props.item_image.src == ''){
         return(
             <></>
