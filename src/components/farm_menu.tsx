@@ -2,12 +2,12 @@ import {useState} from 'react'
 import Image from 'next/image'
 import styles from '@/styles/components/menu.module.css'
 import XButton from './x_button'
-import {tokens, token_name} from '@/hooks/token_list'
+import {tokens} from '@/hooks/token_list'
 import {protocols, protocol_name, protocol_farm_icon} from '@/hooks/protocol_list'	
 import {Protocol, Token} from '@/utils/interfaces'
 
 export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => void, placing_field: (protocol: Protocol, amount: string, token: Token) => void}) {
-    let [selected_token, set_selected_token] = useState<Token>(Token.ETH);
+    const [selected_token, set_selected_token] = useState<Token>(Token.ETH);
     
     return (
         <div className={styles.menu} hidden={!props.show}>
@@ -17,7 +17,7 @@ export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => 
             <table className={styles.seeds_table}>
                 <tbody>
                     <br/>
-                    <SeedsList set_selected_token={set_selected_token}/>
+                    <SeedsList selected_token={selected_token} set_selected_token={set_selected_token}/>
                 </tbody>
             </table>
             <table className={styles.fields_table}>
@@ -31,11 +31,19 @@ export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => 
     )
 }
 
-function SeedsList(props:{set_selected_token: (token: Token) => void}) {
+function SeedsList(props:{selected_token: Token, set_selected_token: (token: Token) => void}) {
+
     let seeds: JSX.Element[] = [];
     tokens.forEach(token => {
+        let seed_row_color;
+        if (token.token === props.selected_token) {
+            seed_row_color = 'rgb(161, 121, 83)';
+        } else {
+            seed_row_color = 'rgb(122, 89, 58)';
+        }
         seeds.push(
-            <tr className={styles.seeds_row} onClick={()=>props.set_selected_token(token.token)}>
+            // tr has different color when hovered
+            <tr className={styles.seeds_row} style={{backgroundColor: seed_row_color}} onClick={()=>props.set_selected_token(token.token)}>
                 <td className={styles.seeds_col}>
                     <Image className={styles.asset_icon} alt={token.name} src={token.src} width={80} height={80}/>
                 </td>

@@ -7,6 +7,7 @@ export enum BuildType{
     None,
     Mill,
     Field,
+    TownHall,
     Market,
 }
 
@@ -43,11 +44,31 @@ export default function CursorItem(props: {item_image: BuildItem, place_building
             <></>
         );
     }else{
+        // the top and left placement of the image should always snap to 25 pixel increments
+        let y = (mousePos.y - props.item_image.height/2);
+        let x = (mousePos.x - props.item_image.width/2);
+        if (y % 25 > 12){
+            y = y - y % 25 + 25;
+        }else{
+            y = y - y % 25;
+        }
+        if (x % 25 > 12){
+            x = x - x % 25 + 25;
+        }else{
+            x = x - x % 25;
+        }
+
+
         // TODO: We are doing a lot of string manipulation here....probably want to change this
         return(
             <>
-                <Image className={styles.curso_image} onClick={() => props.place_building(mousePos.y - props.item_image.height/2,mousePos.x - props.item_image.width/2)} alt={'cursor_image'} style={{top: mousePos.y - props.item_image.height/2, left: mousePos.x - props.item_image.width/2}} src={props.item_image.src} width={props.item_image.width} height={props.item_image.height}/>
-                <Image className={styles.curso_image} onClick={() => props.place_building(mousePos.y - props.item_image.height/2,mousePos.x - props.item_image.width/2)} alt={'cursor_image_red'} style={{top: mousePos.y - props.item_image.height/2, left: mousePos.x - props.item_image.width/2, opacity:+is_overlapping_buildings}} src={props.item_image.src.substring(0, props.item_image.src.length-9)+'red.png'} width={props.item_image.width} height={props.item_image.height}/>
+                <Image className={styles.curso_image} alt={'cursor_image'} style={{top: y, left: x}} src={props.item_image.src} width={props.item_image.width} height={props.item_image.height}/>
+                <Image className={styles.curso_image} onClick={() => {
+                    if(is_overlapping_buildings){
+                        return;
+                    };
+                    props.place_building(y,x);
+                }} alt={'cursor_image_red'} style={{top: y, left: x, opacity:+is_overlapping_buildings}} src={props.item_image.src.substring(0, props.item_image.src.length-9)+'red.png'} width={props.item_image.width} height={props.item_image.height}/>
             </>
         );
     }     

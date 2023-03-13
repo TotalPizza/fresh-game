@@ -5,7 +5,6 @@ import LeftMenuBar from '@/components/left_menu_bar'
 import FarmValueDisplay from '@/components/farm_value_display'
 import FarmMenu from '@/components/farm_menu'
 import BuildMenu from '@/components/build_menu'
-import TownHall from '@/components/town_hall'
 import WalletButton from '@/components/wallet'
 import DarkMode from '@/components/dark_mode'
 import CursorItem from '@/components/cursor_item'
@@ -20,6 +19,7 @@ export interface BuildingPlacement {
     src: string,
     width: number,
     height: number,
+    building: BuildType,
     click_event: () => void,
 }
 
@@ -30,7 +30,7 @@ export default function Home() {
   const [show_farmer_menu, set_show_farmer_menu] = useState(false)
   const [dark_mode, set_dark_mode] = useState(false)
   const [show_build_menu, set_show_build_menu] = useState(false)
-  const [buildings, set_buildings] = useState<BuildingPlacement[]>([{x: 500, y: 250, src: '/images/town_hall.png', width: 417, height: 249, click_event: ()=>{}}]);
+  const [buildings, set_buildings] = useState<BuildingPlacement[]>([{x: 500, y: 250, src: '/images/town_hall.png', width: 417, height: 249, click_event: ()=>{}, building: BuildType.TownHall}]);
   const [building_status, set_building_status] = useState<boolean[]>([false]);
   const {account, address, status} = useAccount();
 
@@ -79,7 +79,7 @@ export default function Home() {
     }
     // We always remove the last 5 characters which are _white.png
     console.log({x: x, y: y, src: selected_building.src.substring(0, selected_building.src.length-10)+'.png', width: selected_building.width, height: selected_building.height})
-    set_buildings([...buildings, {x: y, y: x, src: selected_building.src.substring(0, selected_building.src.length-10)+'.png', width: selected_building.width, height: selected_building.height, click_event: click_event}]);
+    set_buildings([...buildings, {x: y, y: x, src: selected_building.src.substring(0, selected_building.src.length-10)+'.png', width: selected_building.width, height: selected_building.height, click_event: click_event, building: selected_building.building}]);
     set_selected_building({building: BuildType.None, src: '', width: 300, height: 300});
   }
 
