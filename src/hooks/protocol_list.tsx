@@ -27,3 +27,11 @@ export const protocol_lend_entry_points = [
     "mint", // Nostra
     "mint" // Yagi
 ]
+
+export const protocol_farms_values = [
+    [
+        ["0.001", "0.002"], // ETH
+        ["1.00", "5.00"], // USDC
+    ], // Nostra
+    [] // Yagi
+]

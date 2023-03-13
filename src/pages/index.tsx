@@ -95,6 +95,8 @@ export default function Home() {
         <FarmMenu show={show_farmer_menu} toggle_farm_menu={toggle_farm_menu} placing_field={placing_field}/>
         <BuildMenu building_status={building_status} show={show_build_menu} toggle_build_menu={toggle_build_menu} placing_building={placing_building}/>
         <DarkMode dark_mode={dark_mode} toggle_dark_mode={toggle_dark_mode}/>
+        <DarkMode dark_mode={dark_mode} toggle_dark_mode={toggle_dark_mode}/>
+        <Image style={{top: 530, left: 600, position: "absolute", zIndex: 4}} src={"/images/little_helper.png"} alt={"little_helper"} width={33} height={40}/>
         <WalletButton account={account}/>
         <CursorItem item_image={selected_building} place_building={place_building} buildings={buildings}/>
       </body>

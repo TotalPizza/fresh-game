@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from '@/styles/components/menu.module.css'
 import XButton from './x_button'
 import {tokens} from '@/hooks/token_list'
-import {protocols, protocol_name, protocol_farm_icon} from '@/hooks/protocol_list'	
+import {protocols, protocol_name, protocol_farm_icon, protocol_farms_values} from '@/hooks/protocol_list'	
 import {Protocol, Token} from '@/utils/interfaces'
 
 export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => void, placing_field: (protocol: Protocol, amount: string, token: Token) => void}) {
@@ -84,19 +84,21 @@ function FieldsList(props:{token: Token, placing_field: (protocol: Protocol, amo
         }
     });
     valid_protocols.forEach(protocol => {
-        fields.push(
-            <tr className={styles.fields_row} onClick={() => props.placing_field(protocol,"0.001",props.token)}>
-                <td className={styles.fields_col}>
-                    <Image className={styles.asset_icon} alt={protocol_name[protocol]} src={protocol_farm_icon[protocol]} width={80} height={80}/>
-                </td>
-                <td className={styles.fields_col}>
-                    {"0.001"}
-                </td>
-                <td className={styles.fields_col}>
-                    {"1% APY"}
-                </td>
-            </tr>
-        ) 
+        protocol_farms_values[protocol][props.token].forEach(token_amount => {
+            fields.push(
+                <tr className={styles.fields_row} onClick={() => props.placing_field(protocol,token_amount,props.token)}>
+                    <td className={styles.fields_col}>
+                        <Image className={styles.asset_icon} alt={protocol_name[protocol]} src={protocol_farm_icon[protocol]} width={80} height={80}/>
+                    </td>
+                    <td className={styles.fields_col}>
+                        {token_amount}
+                    </td>
+                    <td className={styles.fields_col}>
+                        {"1% APY"}
+                    </td>
+                </tr>
+            ) 
+        });
     });
     return(
         <>
