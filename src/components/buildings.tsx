@@ -15,9 +15,9 @@ export default function ConstructedBuildings(props: {buildings: BuildingPlacemen
                 let highlight_left = 0;
                 if (building.building == BuildType.Field){
                     z_index = 4;        
-                    highlight_top = building.y;
-                    highlight_left = building.x;
-                    highlight_width = building.width;
+                    highlight_top = building.y + 4;
+                    highlight_left = building.x - 8;
+                    highlight_width = building.width + 16;
                     highlight_height = building.height;
                     highlight_src = "/images/field_highlight.png";
                 }
