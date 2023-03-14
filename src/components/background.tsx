@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import styles from '@/styles/components/background.module.css'
 import {useEffect, useState} from 'react'
+import { JsxElement } from 'typescript';
 
 export default function Background(props: {dark_mode: boolean}) {
     const [windowSize, setWindowSize] = useState({
@@ -36,7 +37,7 @@ export default function Background(props: {dark_mode: boolean}) {
     }
     let number_of_row_tiles = Math.ceil(windowSize.width/50);
     let number_of_cols = Math.ceil(windowSize.height/50);
-    let tiles = [];
+    let tiles: JSX.Element[] = [];
     const tile_amount = number_of_row_tiles*number_of_cols;
     for (let i = 0; i < tile_amount; i++) {
         tiles.push(

@@ -36,11 +36,28 @@ export default function Home() {
   const [building_status, set_building_status] = useState<boolean[]>([false,true]);
   const {account, address, status} = useAccount();  
   const [isLoading, setIsLoading] = useState(true);
+  const [images, setImages] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    // Preload all images
+    let images = [
+      <Image src="/images/field_white.png" priority={true} alt={"field_white"} width={350} height={175} />,
+      <Image src="/images/field_red.png" priority={true} alt={"field"} width={350} height={175} />,
+      <Image src="/images/field.png" priority={true} alt={"field"} width={350} height={175} />,
+      <Image src="/images/mill.png" priority={true} alt={"mill"} width={300} height={270} />,
+      <Image src="/images/mill_white.png" priority={true} alt={"mill_white"} width={300} height={270} />,
+      <Image src="/images/mill_red.png" priority={true} alt={"mill_white"} width={300} height={270} />,
+      <Image src="/images/town_hall.png" priority={true} alt={"town_hall"} width={400} height={250} />,
+      <Image src="/images/town_hall_white.png" priority={true} alt={"town_hall_white"} width={400} height={250} />,
+      <Image src="/images/town_hall_red.png" priority={true} alt={"town_hall_white"} width={400} height={250} />,
+      <Image src="/images/gras.png" priority={true} alt={"menu_background"} width={50} height={50} />,
+      <Image src="/images/town_hall_icon.png" priority={true} alt={"town_hall_icon"} width={100} height={100} />,
+      <Image src="/images/town_hall_icon_disabled.png" priority={true} alt={"town_hall_icon_white"} width={100} height={100} />,
+      <Image src="/images/nostra_mill_icon.png" priority={true} alt={"nostra_mill_icon"} width={100} height={100} />,
+      <Image src="/images/nostra_mill_icon_disabled.png" priority={true} alt={"nostra_mill_icon_white"} width={100} height={100} />,
+      <Image src="/images/field_icon.png" priority={true} alt={"field_icon"} width={100} height={100} />,
+    ];
+    setIsLoading(false);
   }, []);
 
   const pop_instructions = () => {
@@ -110,14 +127,7 @@ export default function Home() {
         <LoadingScreen/>
       </>
     )
-  }else if(false) {
-    <>
-      <Image priority={true} alt={'cursor_image1'} src={"image/mill.png"} width={300} height={270}/>
-      <Image priority={true} alt={'cursor_image2'} src={"image/mill_white.png"} width={300} height={270}/>
-      <Image priority={true} alt={'cursor_image3'} src={"image/mill_red.png"} width={300} height={270}/>
-    </>
-  }
-  else{
+  }else{
     return (
       <>
         <body>
