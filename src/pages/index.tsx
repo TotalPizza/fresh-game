@@ -41,21 +41,21 @@ export default function Home() {
   useEffect(() => {
     // Preload all images
     let images = [
-      <Image src="/images/field_white.png" priority={true} alt={"field_white"} width={350} height={175} />,
-      <Image src="/images/field_red.png" priority={true} alt={"field"} width={350} height={175} />,
-      <Image src="/images/field.png" priority={true} alt={"field"} width={350} height={175} />,
-      <Image src="/images/mill.png" priority={true} alt={"mill"} width={300} height={270} />,
-      <Image src="/images/mill_white.png" priority={true} alt={"mill_white"} width={300} height={270} />,
-      <Image src="/images/mill_red.png" priority={true} alt={"mill_white"} width={300} height={270} />,
-      <Image src="/images/town_hall.png" priority={true} alt={"town_hall"} width={400} height={250} />,
-      <Image src="/images/town_hall_white.png" priority={true} alt={"town_hall_white"} width={400} height={250} />,
-      <Image src="/images/town_hall_red.png" priority={true} alt={"town_hall_white"} width={400} height={250} />,
-      <Image src="/images/gras.png" priority={true} alt={"menu_background"} width={50} height={50} />,
-      <Image src="/images/town_hall_icon.png" priority={true} alt={"town_hall_icon"} width={100} height={100} />,
-      <Image src="/images/town_hall_icon_disabled.png" priority={true} alt={"town_hall_icon_white"} width={100} height={100} />,
-      <Image src="/images/nostra_mill_icon.png" priority={true} alt={"nostra_mill_icon"} width={100} height={100} />,
-      <Image src="/images/nostra_mill_icon_disabled.png" priority={true} alt={"nostra_mill_icon_white"} width={100} height={100} />,
-      <Image src="/images/field_icon.png" priority={true} alt={"field_icon"} width={100} height={100} />,
+      <Image src="/images/field_white.png" key={0} priority={true} alt={"field_white"} width={350} height={175} />,
+      <Image src="/images/field_red.png" key={1} priority={true} alt={"field_red"} width={350} height={175} />,
+      <Image src="/images/field.png" key={2} priority={true} alt={"field"} width={350} height={175} />,
+      <Image src="/images/mill.png" key={3} priority={true} alt={"mill"} width={300} height={270} />,
+      <Image src="/images/mill_white.png" key={4} priority={true} alt={"mill_white"} width={300} height={270} />,
+      <Image src="/images/mill_red.png" key={5} priority={true} alt={"mill_red"} width={300} height={270} />,
+      <Image src="/images/town_hall.png" key={6} priority={true} alt={"town_hall"} width={400} height={250} />,
+      <Image src="/images/town_hall_white.png" key={7} priority={true} alt={"town_hall_white"} width={400} height={250} />,
+      <Image src="/images/town_hall_red.png" key={8} priority={true} alt={"town_hall_red"} width={400} height={250} />,
+      <Image src="/images/gras.png" key={9} priority={true} alt={"gras"} width={50} height={50} />,
+      <Image src="/images/town_hall_icon.png" key={10} priority={true} alt={"town_hall_icon"} width={100} height={100} />,
+      <Image src="/images/town_hall_icon_disabled.png" key={11} priority={true} alt={"town_hall_icon_disabled"} width={100} height={100} />,
+      <Image src="/images/nostra_mill_icon.png" key={12} priority={true} alt={"nostra_mill_icon"} width={100} height={100} />,
+      <Image src="/images/nostra_mill_icon_disabled.png" key={13} priority={true} alt={"nostra_mill_icon_disabled"} width={100} height={100} />,
+      <Image src="/images/field_icon.png" key={14} priority={true} alt={"field_icon"} width={100} height={100} />,
     ];
     setIsLoading(false);
   }, []);
