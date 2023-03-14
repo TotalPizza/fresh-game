@@ -32,8 +32,8 @@ export default function ConstructedBuildings(props: {buildings: BuildingPlacemen
                 if (building.building == BuildType.Mill){
                     z_index = 5;
                     highlight_top = building.y + 150;
-                    highlight_left = building.x + 40;
-                    highlight_width = building.width - 40;
+                    highlight_left = building.x + 49;
+                    highlight_width = building.width - 65;
                     highlight_height = building.height - 145;
                     highlight_src = "/images/mill_highlight.png";
                 }
