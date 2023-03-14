@@ -67,7 +67,7 @@ export default function CursorItem(props: {item_image: BuildItem, place_building
         // TODO: We are doing a lot of string manipulation here....probably want to change this
         return(
             <>
-                <Image className={styles.curso_image} priority={true} alt={'cursor_image'} style={{top: y, left: x}} src={props.item_image.src} width={props.item_image.width} height={props.item_image.height}/>
+                <Image className={styles.curso_image} priority={true} alt={'cursor_image'} style={{top: y, left: x, opacity: 0.7}} src={props.item_image.src} width={props.item_image.width} height={props.item_image.height}/>
                 <Image className={styles.curso_image} priority={true} onClick={() => {
                     if(is_overlapping_buildings){
                         return;
@@ -75,7 +75,7 @@ export default function CursorItem(props: {item_image: BuildItem, place_building
                     props.place_building(y,x);
                 }} onContextMenu={() => {
                     props.cancel_building_placement();
-                }} alt={'cursor_image_red'} style={{top: y, left: x, opacity:+is_overlapping_buildings}} src={props.item_image.src.substring(0, props.item_image.src.length-9)+'red.png'} width={props.item_image.width} height={props.item_image.height}/>
+                }} alt={'cursor_image_red'} style={{top: y, left: x, opacity:(+is_overlapping_buildings-0.3)}} src={props.item_image.src.substring(0, props.item_image.src.length-9)+'red.png'} width={props.item_image.width} height={props.item_image.height}/>
             </>
         );
     }     

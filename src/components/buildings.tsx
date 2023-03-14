@@ -15,26 +15,26 @@ export default function ConstructedBuildings(props: {buildings: BuildingPlacemen
                 let highlight_left = 0;
                 if (building.building == BuildType.Field){
                     z_index = 4;        
-                    highlight_top = building.y + 4;
-                    highlight_left = building.x - 8;
-                    highlight_width = building.width + 16;
-                    highlight_height = building.height;
+                    highlight_top = building.y;
+                    highlight_left = building.x - 6;
+                    highlight_width = building.width + 12;
+                    highlight_height = building.height + 2;
                     highlight_src = "/images/field_highlight.png";
                 }
                 if (building.building == BuildType.TownHall){
                     z_index = 5;
                     highlight_top = building.y + 96;
-                    highlight_left = building.x + 15;
-                    highlight_width = building.width - 10;
+                    highlight_left = building.x;
+                    highlight_width = building.width;
                     highlight_height = building.height - 32;
                     highlight_src = "/images/town_hall_highlight.png";
                 }
                 if (building.building == BuildType.Mill){
                     z_index = 5;
-                    highlight_top = building.y + 149;
-                    highlight_left = building.x + 47;
-                    highlight_width = building.width - 58;
-                    highlight_height = building.height - 160;
+                    highlight_top = building.y + 150;
+                    highlight_left = building.x + 40;
+                    highlight_width = building.width - 40;
+                    highlight_height = building.height - 145;
                     highlight_src = "/images/mill_highlight.png";
                 }
                 return(

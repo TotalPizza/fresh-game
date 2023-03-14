@@ -71,7 +71,7 @@ export default function Home() {
   }
   function placing_field(protocol: Protocol, amount: string, token: Token) {
     toggle_farm_menu();
-    set_selected_building({building: BuildType.Field,src:"/images/field_white.png",width:250,height:250});
+    set_selected_building({building: BuildType.Field,src:"/images/field_white.png",width:350,height:175});
     set_temp_instruction_info({protocol: protocol, amount: amount, token: token});
   }
   function place_building(x: number, y: number) {
