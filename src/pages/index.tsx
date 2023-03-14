@@ -110,7 +110,14 @@ export default function Home() {
         <LoadingScreen/>
       </>
     )
-  }else{
+  }else if(false) {
+    <>
+      <Image priority={true} alt={'cursor_image1'} src={"image/mill.png"} width={300} height={270}/>
+      <Image priority={true} alt={'cursor_image2'} src={"image/mill_white.png"} width={300} height={270}/>
+      <Image priority={true} alt={'cursor_image3'} src={"image/mill_red.png"} width={300} height={270}/>
+    </>
+  }
+  else{
     return (
       <>
         <body>
