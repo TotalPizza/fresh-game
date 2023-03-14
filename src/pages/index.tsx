@@ -32,8 +32,8 @@ export default function Home() {
   const [show_farmer_menu, set_show_farmer_menu] = useState(false)
   const [dark_mode, set_dark_mode] = useState(false)
   const [show_build_menu, set_show_build_menu] = useState(false)
-  const [buildings, set_buildings] = useState<BuildingPlacement[]>([{x: 500, y: 250, src: '/images/town_hall.png', width: 417, height: 249, click_event: ()=>{}, building: BuildType.TownHall}]);
-  const [building_status, set_building_status] = useState<boolean[]>([false]);
+  const [buildings, set_buildings] = useState<BuildingPlacement[]>([]);
+  const [building_status, set_building_status] = useState<boolean[]>([false,true]);
   const {account, address, status} = useAccount();  
   const [isLoading, setIsLoading] = useState(true);
 
@@ -51,6 +51,8 @@ export default function Home() {
   }
   const clear_instructions = () => {
     set_instructions([]);
+  }
+  const toggle_town_hall_menu = () => {
   }
   const toggle_farm_menu = () => {
     set_show_farmer_menu(!show_farmer_menu);
@@ -74,11 +76,19 @@ export default function Home() {
   }
   function place_building(x: number, y: number) {
     let click_event = () => {};
+    if (selected_building.building == BuildType.TownHall){
+      click_event = toggle_town_hall_menu;
+      // Mark building as being built. Prevents another one from being built
+      let new_building_status = [...building_status];
+      new_building_status[0] = true;
+      new_building_status[1] = false; // Unlock Mill
+      set_building_status(new_building_status);
+    }
     if (selected_building.building == BuildType.Mill){
       click_event = toggle_farm_menu;
       // Mark building as being built. Prevents another one from being built
       let new_building_status = [...building_status];
-      new_building_status[0] = true;
+      new_building_status[1] = true;
       set_building_status(new_building_status);
     }
     if (selected_building.building == BuildType.Field){
