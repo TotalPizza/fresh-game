@@ -57,7 +57,9 @@ export default function Home() {
       <Image src="/images/nostra_mill_icon_disabled.png" key={13} priority={true} alt={"nostra_mill_icon_disabled"} width={100} height={100} />,
       <Image src="/images/field_icon.png" key={14} priority={true} alt={"field_icon"} width={100} height={100} />,
     ];
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
   }, []);
 
   const pop_instructions = () => {
