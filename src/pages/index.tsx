@@ -90,6 +90,9 @@ export default function Home() {
     set_buildings([...buildings, {x: y, y: x, src: selected_building.src.substring(0, selected_building.src.length-10)+'.png', width: selected_building.width, height: selected_building.height, click_event: click_event, building: selected_building.building}]);
     set_selected_building({building: BuildType.None, src: '', width: 300, height: 300});
   }
+  const cancel_building_placement = () => {
+    set_selected_building({building: BuildType.None, src: '', width: 300, height: 300});
+  }
   
   if(isLoading){
     return (
@@ -111,7 +114,7 @@ export default function Home() {
           <DarkMode dark_mode={dark_mode} toggle_dark_mode={toggle_dark_mode}/>
           <Image style={{top: 530, left: 600, position: "absolute", zIndex: 4}} src={"/images/little_helper.png"} alt={"little_helper"} width={33} height={40}/>
           <WalletButton account={account}/>
-          <CursorItem item_image={selected_building} place_building={place_building} buildings={buildings}/>
+          <CursorItem item_image={selected_building} cancel_building_placement={cancel_building_placement} place_building={place_building} buildings={buildings}/>
         </body>
       </>
     )

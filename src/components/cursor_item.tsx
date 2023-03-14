@@ -18,17 +18,23 @@ export interface BuildItem{
     height: number;
 }
 
-export default function CursorItem(props: {item_image: BuildItem, place_building: (y: number, x: number) => void, buildings: BuildingPlacement[]}) {
+export default function CursorItem(props: {item_image: BuildItem, place_building: (y: number, x: number) => void, buildings: BuildingPlacement[], cancel_building_placement:()=>void}) {
     const [mousePos, setMousePos] = useState({x: 0, y: 0});
 
+    // Track cursor cooridinates and prevent left click menu from popping up
     useEffect(() => {
         const handleMouseMove = (event:any) => {
           setMousePos({ x: event.clientX, y: event.clientY });
         };
-    
+        const handleContextMenu = (event:any) => {
+            event.preventDefault()
+        }
+        
+        document.addEventListener("contextmenu", handleContextMenu)
         window.addEventListener('mousemove', handleMouseMove);
     
         return () => {
+        document.removeEventListener("contextmenu", handleContextMenu)
           window.removeEventListener(
             'mousemove',
             handleMouseMove
@@ -67,6 +73,8 @@ export default function CursorItem(props: {item_image: BuildItem, place_building
                         return;
                     };
                     props.place_building(y,x);
+                }} onContextMenu={() => {
+                    props.cancel_building_placement();
                 }} alt={'cursor_image_red'} style={{top: y, left: x, opacity:+is_overlapping_buildings}} src={props.item_image.src.substring(0, props.item_image.src.length-9)+'red.png'} width={props.item_image.width} height={props.item_image.height}/>
             </>
         );
