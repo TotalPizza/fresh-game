@@ -12,7 +12,7 @@ export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => 
     return (
         <div className={styles.menu} hidden={!props.show}>
             <Image className={styles.menu_background} alt={"menu_background"} src='/images/menu_background.png' width={1000} height={750}/>
-            <XButton margin_left={890} margin_top={10} close_action={props.toggle_farm_menu}/>
+            <XButton margin_left={750} margin_top={-700} close_action={props.toggle_farm_menu}/>
             <div className={styles.seeds_heading}>Seeds</div>
             <table className={styles.seeds_table}>
                 <tbody>

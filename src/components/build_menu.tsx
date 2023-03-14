@@ -6,8 +6,8 @@ import { BuildItem, BuildType } from '@/components/cursor_item'
 export default function BuildMenu(props: {building_status: boolean[],show: boolean, toggle_build_menu: () => void, placing_building: (item: BuildItem) => void}) {    
     return (
         <div className={styles.menu} hidden={!props.show}>
-            <Image className={styles.menu_background} alt={"menu_background"} src='/images/menu_background.png' width={700} height={750}/>
-            <XButton margin_left={590} margin_top={10} close_action={props.toggle_build_menu}/>
+            <Image className={styles.menu_background} alt={"menu_background"} src='/images/menu_background.png' width={1000} height={750}/>
+            <XButton margin_left={750} margin_top={-700} close_action={props.toggle_build_menu}/>
             <div className={styles.building_heading}>Buildings</div>
             <Image className={styles.building_icon_frame} alt={"mill_icon_frame"} src='/images/frame.png' width={100} height={100}/>
             <Image className={styles.building_icon_frame_hover} onClick={()=>{
