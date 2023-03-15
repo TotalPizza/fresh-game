@@ -36,7 +36,6 @@ export default function Home() {
   const [building_status, set_building_status] = useState<boolean[]>([false,true]);
   const {account, address, status} = useAccount();  
   const [isLoading, setIsLoading] = useState(true);
-  const [images, setImages] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
     // Preload all images ... not finished
@@ -45,11 +44,22 @@ export default function Home() {
     }, 3000);
   }, []);
 
-  const pop_instructions = () => {
+  const pop_instruction = () => {
     // remove last entry of instructions
     let new_instructions = [...instructions];
-    new_instructions.pop();
-    set_instructions(new_instructions);
+    if (new_instructions.length > 0){
+      new_instructions.pop();
+      set_instructions(new_instructions);
+    }
+    // Also remove latest farm building
+    let current_buildings = [...buildings];
+    for (let i = current_buildings.length-1; i >= 0; i--){
+      if (current_buildings[i].building == BuildType.Field){
+        current_buildings.splice(i, 1);
+        break;
+      }
+    }
+    set_buildings(current_buildings);
   }
   const clear_instructions = () => {
     set_instructions([]);
@@ -117,7 +127,7 @@ export default function Home() {
       <>
         <body>
           <Background dark_mode={dark_mode}/>
-          <ActionsBar account_address={address} instructions={instructions} clear_instructions={clear_instructions}/>
+          <ActionsBar account_address={address} instructions={instructions} clear_instructions={clear_instructions} pop_instruction={pop_instruction}/>
           <ConstructedBuildings buildings={buildings}/>
           <BuildButton toggle_logic={toggle_build_menu}/>
           <FarmValueDisplay/>
@@ -128,6 +138,7 @@ export default function Home() {
           <WalletButton account={account}/>
           <CursorItem item_image={selected_building} cancel_building_placement={cancel_building_placement} place_building={place_building} buildings={buildings}/>
         </body>
+
         <div hidden>
           <Image src="/images/field_white.png" key={0} priority={true} alt={"field_white"} width={350} height={175} />,
           <Image src="/images/field_red.png" key={1} priority={true} alt={"field_red"} width={350} height={175} />,

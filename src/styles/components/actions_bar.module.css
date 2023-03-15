@@ -32,8 +32,33 @@
     position: relative;
 }
 
-.action_row_one{
+.undo{
+    position: fixed;
+    right: 150px;
+    bottom: 150px;
+    z-index: 8;
 }
 
-.action_row_two{
+.undo_hover{
+    position: fixed;
+    right: 150px;
+    bottom: 150px;
+    opacity: 0;
+    z-index: 8;
+}
+.undo_hover:hover{
+    position: fixed;
+    right: 150px;
+    bottom: 150px;
+    cursor: pointer;
+    opacity: 1;
+    z-index: 9;
+}
+
+.undo_frame{
+    position: fixed;
+    right: 150px;
+    bottom: 150px;
+    pointer-events: none;
+    z-index: 9;
 }

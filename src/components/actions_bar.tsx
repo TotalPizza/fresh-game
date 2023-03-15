@@ -12,7 +12,7 @@ interface ActionDisplay{
     border: number,
 }
 
-export function ActionsBar(props:{account_address: string|undefined, instructions: Instruction[], clear_instructions: () => void}){
+export function ActionsBar(props:{account_address: string|undefined, instructions: Instruction[], clear_instructions: () => void, pop_instruction: () => void}){
 
     let actions: ActionDisplay[] = [];
     props.instructions.forEach((instruction) => {
@@ -59,7 +59,10 @@ export function ActionsBar(props:{account_address: string|undefined, instruction
                 </tbody>
             </table>
             <Image className={styles.actions_bar_banner} alt={"actions_bar"} src={'/images/actions_bar_banner.png'} width={238} height={900}/>   
-            <ExecuteTransactions calls={calls} clear_instructions={props.clear_instructions}/>  
+            <ExecuteTransactions calls={calls} clear_instructions={props.clear_instructions}/>
+            <Image className={styles.undo} alt={"undo_button"} src={'/images/undo.png'} width={50} height={75}/>   
+            <Image className={styles.undo_hover} onClick={props.pop_instruction} alt={"undo_button_hover"} src={'/images/undo_hover.png'} width={50} height={75}/>   
+            <Image className={styles.undo_frame} alt={"undo_button_frame"} src={'/images/undo_frame.png'} width={50} height={75}/>    
         </>
     )
 }
