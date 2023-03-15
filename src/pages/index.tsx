@@ -33,7 +33,7 @@ export default function Home() {
   const [dark_mode, set_dark_mode] = useState(false)
   const [show_build_menu, set_show_build_menu] = useState(false)
   const [buildings, set_buildings] = useState<BuildingPlacement[]>([]);
-  const [building_status, set_building_status] = useState<boolean[]>([false,true]);
+  const [building_status, set_building_status] = useState<boolean[]>([false,true,true]);
   const {account, address, status} = useAccount();  
   const [isLoading, setIsLoading] = useState(true);
 
@@ -66,6 +66,8 @@ export default function Home() {
   }
   const toggle_town_hall_menu = () => {
   }
+  const toggle_trade_menu = () => {
+  }
   const toggle_farm_menu = () => {
     set_show_farmer_menu(!show_farmer_menu);
     set_show_build_menu(false);
@@ -93,7 +95,7 @@ export default function Home() {
       // Mark building as being built. Prevents another one from being built
       let new_building_status = [...building_status];
       new_building_status[0] = true;
-      new_building_status[1] = false; // Unlock Mill
+      new_building_status[2] = false; // Unlock Market
       set_building_status(new_building_status);
     }
     if (selected_building.building == BuildType.Mill){
@@ -101,6 +103,14 @@ export default function Home() {
       // Mark building as being built. Prevents another one from being built
       let new_building_status = [...building_status];
       new_building_status[1] = true;
+      set_building_status(new_building_status);
+    }
+    if (selected_building.building == BuildType.Market){
+      click_event = toggle_trade_menu;
+      // Mark building as being built. Prevents another one from being built
+      let new_building_status = [...building_status];
+      new_building_status[2] = true; 
+      new_building_status[1] = false; // Unlock Mill
       set_building_status(new_building_status);
     }
     if (selected_building.building == BuildType.Field){
@@ -146,14 +156,17 @@ export default function Home() {
           <Image src="/images/mill.png" key={3} priority={true} alt={"mill"} width={300} height={270} />,
           <Image src="/images/mill_white.png" key={4} priority={true} alt={"mill_white"} width={300} height={270} />,
           <Image src="/images/mill_red.png" key={5} priority={true} alt={"mill_red"} width={300} height={270} />,
-          <Image src="/images/town_hall.png" key={6} priority={true} alt={"town_hall"} width={400} height={250} />,
-          <Image src="/images/town_hall_white.png" key={7} priority={true} alt={"town_hall_white"} width={400} height={250} />,
-          <Image src="/images/town_hall_red.png" key={8} priority={true} alt={"town_hall_red"} width={400} height={250} />,
-          <Image src="/images/town_hall_icon.png" key={10} priority={true} alt={"town_hall_icon"} width={100} height={100} />,
-          <Image src="/images/town_hall_icon_disabled.png" key={11} priority={true} alt={"town_hall_icon_disabled"} width={100} height={100} />,
-          <Image src="/images/nostra_mill_icon.png" key={12} priority={true} alt={"nostra_mill_icon"} width={100} height={100} />,
-          <Image src="/images/nostra_mill_icon_disabled.png" key={13} priority={true} alt={"nostra_mill_icon_disabled"} width={100} height={100} />,
-          <Image src="/images/nostra_field_icon.png" key={14} priority={true} alt={"field_icon"} width={100} height={100} />,
+          <Image src="/images/market.png" key={6} priority={true} alt={"mill"} width={409} height={309} />,
+          <Image src="/images/market_white.png" key={7} priority={true} alt={"mill_white"} width={409} height={309} />,
+          <Image src="/images/market_red.png" key={8} priority={true} alt={"mill_red"} width={409} height={309} />,
+          <Image src="/images/town_hall.png" key={9} priority={true} alt={"town_hall"} width={400} height={250} />,
+          <Image src="/images/town_hall_white.png" key={10} priority={true} alt={"town_hall_white"} width={400} height={250} />,
+          <Image src="/images/town_hall_red.png" key={11} priority={true} alt={"town_hall_red"} width={400} height={250} />,
+          <Image src="/images/town_hall_icon.png" key={12} priority={true} alt={"town_hall_icon"} width={100} height={100} />,
+          <Image src="/images/town_hall_icon_disabled.png" key={13} priority={true} alt={"town_hall_icon_disabled"} width={100} height={100} />,
+          <Image src="/images/nostra_mill_icon.png" key={14} priority={true} alt={"nostra_mill_icon"} width={100} height={100} />,
+          <Image src="/images/nostra_mill_icon_disabled.png" key={15} priority={true} alt={"nostra_mill_icon_disabled"} width={100} height={100} />,
+          <Image src="/images/nostra_field_icon.png" key={16} priority={true} alt={"field_icon"} width={100} height={100} />,
         </div>
       </>
     )
