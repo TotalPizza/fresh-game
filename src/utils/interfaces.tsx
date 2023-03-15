@@ -26,6 +26,12 @@ export interface LendContext{
     protocol: Protocol,
 }
 
+export interface TransferContext{
+    amount: string,
+    token_in: Token,
+    token_out: Token,
+}
+
 export interface Call {
     contractAddress: string;
     entrypoint: string;

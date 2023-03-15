@@ -12,7 +12,7 @@ import LoadingScreen from '@/components/loading_screen'
 import CursorItem from '@/components/cursor_item'
 import { BuildItem, BuildType } from '@/components/cursor_item'
 import ConstructedBuildings from '@/components/buildings'
-import { Instruction, Action, Protocol, Token} from '@/utils/interfaces'
+import { Instruction, Action, Protocol, Token, TransferContext} from '@/utils/interfaces'
 import { ActionsBar } from '@/components/actions_bar'
 import Image from 'next/image'
 
@@ -49,19 +49,22 @@ export default function Home() {
   const pop_instruction = () => {
     // remove last entry of instructions
     let new_instructions = [...instructions];
+    let removed_instruction: Instruction|undefined = undefined;
     if (new_instructions.length > 0){
-      new_instructions.pop();
+      removed_instruction = new_instructions.pop();
       set_instructions(new_instructions);
     }
     // Also remove latest farm building
-    let current_buildings = [...buildings];
-    for (let i = current_buildings.length-1; i >= 0; i--){
-      if (current_buildings[i].building == BuildType.Field){
-        current_buildings.splice(i, 1);
-        break;
+    if (removed_instruction?.action == Action.Lend){
+      let current_buildings = [...buildings];
+      for (let i = current_buildings.length-1; i >= 0; i--){
+        if (current_buildings[i].building == BuildType.Field){
+          current_buildings.splice(i, 1);
+          break;
+        }
       }
+      set_buildings(current_buildings);
     }
-    set_buildings(current_buildings);
   }
   const clear_instructions = () => {
     set_instructions([]);
@@ -85,6 +88,12 @@ export default function Home() {
   }
   const toggle_dark_mode = () => {
     set_dark_mode(!dark_mode);
+  }
+  function add_transfer_instruction(token_in: Token, token_out: Token, amount: string) {
+    let new_instructions = [...instructions];
+    const context: TransferContext = {amount: amount, token_in: token_in, token_out: token_out};
+    new_instructions.push({action: Action.Transfer, context: context});
+    set_instructions(new_instructions);
   }
   function placing_building(item: BuildItem) {
     toggle_build_menu();
@@ -148,7 +157,7 @@ export default function Home() {
           <ConstructedBuildings buildings={buildings}/>
           <BuildButton toggle_logic={toggle_build_menu}/>
           <FarmMenu show={show_farmer_menu} toggle_farm_menu={toggle_farm_menu} placing_field={placing_field}/>
-          <TradeMenu show={show_trade_menu} toggle_trade_menu={toggle_trade_menu}/>
+          <TradeMenu show={show_trade_menu} address={address} toggle_trade_menu={toggle_trade_menu} add_transfer_instruction={add_transfer_instruction}/>
           <BuildMenu building_status={building_status} show={show_build_menu} toggle_build_menu={toggle_build_menu} placing_building={placing_building}/>
           <Image style={{top: 530, left: 600, position: "absolute", zIndex: 4}} src={"/images/little_helper.png"} alt={"little_helper"} width={33} height={40}/>
           <WalletButton account={account}/>
@@ -172,7 +181,7 @@ export default function Home() {
           <Image src="/images/town_hall_icon_disabled.png" key={13} priority={true} alt={"town_hall_icon_disabled"} width={100} height={100} />,
           <Image src="/images/nostra_mill_icon.png" key={14} priority={true} alt={"nostra_mill_icon"} width={100} height={100} />,
           <Image src="/images/nostra_mill_icon_disabled.png" key={15} priority={true} alt={"nostra_mill_icon_disabled"} width={100} height={100} />,
-          <Image src="/images/nostra_field_icon.png" key={16} priority={true} alt={"field_icon"} width={100} height={100} />,
+          <Image src="/fields/nostra.png" key={16} priority={true} alt={"field_icon"} width={100} height={100} />,
         </div>
       </>
     )

@@ -3,21 +3,31 @@ import { protocol_lend_entry_points, protocols } from '@/hooks/protocol_list'
 import { token_addresses, token_decimals } from '@/hooks/token_list'
 import { Call } from '@/utils/interfaces';
 import { ethers } from 'ethers';
+import {contracts} from '@/hooks/constants'
 
 export function InstructionToTX(account_address: string, instructions: Instruction[]): Call[]{
     let calls: Call[] = [];
 
     instructions.forEach((instruction) => {
-        switch(instruction.action){
-            case Action.Lend:	
-                calls.push({
-                    contractAddress: token_addresses[instruction.context.token],
-                    entrypoint: "approve",
-                    calldata: [protocols[instruction.context.token].addresses[instruction.context.protocol],ethers.parseUnits(instruction.context.amount,token_decimals[instruction.context.token]).toString(),"0"]
-                })
-                calls.push(build_lend_transaction(account_address,instruction.context));
-            case Action.Unlend:
-        }
+        if (instruction.action == Action.Lend){
+            calls.push({
+                contractAddress: token_addresses[instruction.context.token],
+                entrypoint: "approve",
+                calldata: [protocols[instruction.context.token].addresses[instruction.context.protocol],ethers.parseUnits(instruction.context.amount,token_decimals[instruction.context.token]).toString(),"0"]
+            })
+            calls.push(build_lend_transaction(account_address,instruction.context));
+        }else{
+            calls.push({
+                contractAddress: token_addresses[instruction.context.token_in],
+                entrypoint: "approve",
+                calldata: [contracts[0].address,ethers.parseUnits(instruction.context.amount,token_decimals[instruction.context.token_in]).toString(),"0"]
+            }),
+            calls.push({
+                contractAddress: contracts[0].address,
+                entrypoint: "swap_exact_tokens_for_tokens",
+                calldata: [ethers.parseUnits(instruction.context.amount,token_decimals[instruction.context.token_in]).toString(),"0", "0","0", token_addresses[instruction.context.token_in], token_addresses[instruction.context.token_out], account_address]
+            });
+        }    
     });
     return calls;
 } 

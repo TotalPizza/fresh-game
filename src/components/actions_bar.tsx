@@ -27,10 +27,10 @@ export function ActionsBar(props:{account_address: string|undefined, instruction
                 break;
             case Action.Transfer:
                 actions.push({
-                    action_info: "Implement Transfer!!!", border: 0
+                    action_info: "Transfer", border: 0
                 }, 
                 {
-                    action_info: instruction.context.amount + ' ' + instruction.context.token, border: 4
+                    action_info: instruction.context.amount + ' ' + token_name[instruction.context.token_in] + ' -> ' + token_name[instruction.context.token_out], border: 4
                 })
                 break;
         }

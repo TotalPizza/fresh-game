@@ -1,0 +1,49 @@
+.swap_button{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: -400px;
+    z-index: 8;
+}
+
+.swap_button_hover{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: -400px;
+    opacity: 0;
+    z-index: 9;
+}
+.swap_button_hover:hover{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: -400px;
+    opacity: 1;
+    cursor: pointer;
+    z-index: 9;
+}
+
+.swap_actions_disabled{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: -400px;
+    cursor: pointer;
+    z-index: 9;
+}
+
+.swap_button_frame{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: -400px;
+    pointer-events: none;
+    z-index: 9;
+}
+
+.swap_button_text{
+    position: fixed;
+    font-family: castellar;
+    color: rgb(233, 206, 52);
+    font-size: 25px;
+    margin-left: 0px;
+    margin-bottom: -400px;
+    pointer-events: none;
+    z-index: 9;
+}
