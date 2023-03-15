@@ -3,7 +3,7 @@
     left: 0px;
     bottom: 0px;
     cursor: pointer;
-    z-index: 3;
+    z-index: 9;
 }
 
 .frame{
@@ -11,7 +11,7 @@
     left: 0px;
     bottom: 0px;
     pointer-events: none;
-    z-index: 6;
+    z-index: 12;
 }
 
 .glas{
@@ -19,7 +19,7 @@
     left: 0px;
     bottom: 0px;
     pointer-events: none;
-    z-index: 5;
+    z-index: 11;
 }
 
 .edge{
@@ -27,14 +27,14 @@
     left: 0px;
     bottom: 0px;
     pointer-events: none;
-    z-index: 4;
+    z-index: 10;
 }
 
 .logo{
     position: fixed;
     left: 0px;
     bottom: 0px;
-    z-index: 3;
+    z-index: 9;
 }
 
 .logo_hover{
@@ -42,7 +42,7 @@
     left: 0px;
     bottom: 0px;
     opacity: 0;
-    z-index: 4;
+    z-index: 10;
 }
 
 .logo_hover:hover{
@@ -50,7 +50,7 @@
     left: 0px;
     bottom: 0px;
     opacity: 1;
-    z-index: 4;
+    z-index: 10;
 }
 
 .modal_header{

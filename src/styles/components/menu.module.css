@@ -7,26 +7,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 5;
+    z-index: 10;
 }
 
 .menu_background{
     position: fixed;
-    z-index: 5;
+    z-index: 10;
 }
 
 .seeds_table{
     position: fixed;
     margin-right: 450px;
     margin-bottom: 150px;
-    z-index: 5;
+    z-index: 10;
 }
 
 .fields_table{
     position: fixed;
     margin-left: 450px;
     margin-bottom: 150px;
-    z-index: 5;
+    z-index: 10;
 }
 
 .fields_heading{
@@ -36,7 +36,7 @@
     font-family: castellar;
     font-size: 50px;
     height: 50px;
-    z-index: 5;
+    z-index: 10;
 }
 
 .fields_col{
@@ -61,7 +61,7 @@
     font-family: castellar;
     font-size: 50px;
     height: 50px;
-    z-index: 5;
+    z-index: 10;
 }
 
 .seeds_col{

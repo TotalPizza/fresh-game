@@ -1,0 +1,75 @@
+.menu{
+    position: fixed;
+    left: 10%;
+    top: 10%;
+    right: 25%;
+    bottom: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 8;
+}
+
+.menu_background{
+    position: fixed;
+    z-index: 8;
+}
+
+.building_heading{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: 500px;
+    font-family: castellar;
+    font-size: 50px;
+    height: 50px;
+    z-index: 8;
+}
+
+.asset_icon_1{
+    position: fixed;
+    margin-left: -500px;
+    margin-bottom: 150px;
+    z-index: 8;
+}
+
+.asset_icon_2{
+    position: fixed;
+    margin-left: -500px;
+    margin-bottom: -200px;
+    z-index: 8;
+}
+
+.value_filler_1{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: 150px;
+    z-index: 8;
+}
+
+.value_filler_2{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: -200px;
+    z-index: 8;
+}
+
+.value_filler_frame_1{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: 150px;
+    z-index: 8;
+}
+
+.value_filler_frame_2{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: -200px;
+    z-index: 8;
+}
+
+.switch_arrows{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: -25px;
+    z-index: 8;
+}
