@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 import { useAccount } from '@starknet-react/core'
 import Background from '@/components/background'
 import BuildButton from '@/components/building_button'
-import FarmValueDisplay from '@/components/farm_value_display'
+import UseMobileView  from '@/hooks/mobile_view'
 import FarmMenu from '@/components/farm_menu'
 import TradeMenu from '@/components/trade_menu'
 import BuildMenu from '@/components/build_menu'
 import WalletButton from '@/components/wallet'
-import DarkMode from '@/components/dark_mode'
+import MobileView from '@/components/mobile_view'
 import LoadingScreen from '@/components/loading_screen'
 import CursorItem from '@/components/cursor_item'
 import { BuildItem, BuildType } from '@/components/cursor_item'
@@ -142,6 +142,11 @@ export default function Home() {
     set_selected_building({building: BuildType.None, src: '', width: 300, height: 300});
   }
   
+  if (UseMobileView()) {
+    return(
+      <MobileView/>
+    )
+  }
   if(isLoading){
     return (
       <>
