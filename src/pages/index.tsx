@@ -138,12 +138,11 @@ export default function Home() {
           <Image src="/images/town_hall.png" key={6} priority={true} alt={"town_hall"} width={400} height={250} />,
           <Image src="/images/town_hall_white.png" key={7} priority={true} alt={"town_hall_white"} width={400} height={250} />,
           <Image src="/images/town_hall_red.png" key={8} priority={true} alt={"town_hall_red"} width={400} height={250} />,
-          <Image src="/images/gras.png" key={9} priority={true} alt={"gras"} width={50} height={50} />,
           <Image src="/images/town_hall_icon.png" key={10} priority={true} alt={"town_hall_icon"} width={100} height={100} />,
           <Image src="/images/town_hall_icon_disabled.png" key={11} priority={true} alt={"town_hall_icon_disabled"} width={100} height={100} />,
           <Image src="/images/nostra_mill_icon.png" key={12} priority={true} alt={"nostra_mill_icon"} width={100} height={100} />,
           <Image src="/images/nostra_mill_icon_disabled.png" key={13} priority={true} alt={"nostra_mill_icon_disabled"} width={100} height={100} />,
-          <Image src="/images/field_icon.png" key={14} priority={true} alt={"field_icon"} width={100} height={100} />,
+          <Image src="/images/nostra_field_icon.png" key={14} priority={true} alt={"field_icon"} width={100} height={100} />,
         </div>
       </>
     )
