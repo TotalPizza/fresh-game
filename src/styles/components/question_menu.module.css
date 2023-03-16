@@ -1,9 +1,9 @@
 .menu{
     position: fixed;
     left: 10%;
-    top: 10%;
+    top: 5%;
     right: 25%;
-    bottom: 10%;
+    bottom: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@
 .heading{
     position: fixed;
     margin-left: 0px;
-    margin-bottom: 500px;
+    margin-bottom: 600px;
     font-family: castellar;
     font-size: 50px;
     height: 50px;
@@ -28,9 +28,9 @@
 .connect{
     position: fixed;
     margin-left: 0px;
-    margin-bottom: 300px;
+    margin-bottom: 450px;
     font-family: castellar;
-    font-size: 20px;
+    font-size: 16px;
     height: 50px;
     z-index: 10;
 }
@@ -38,9 +38,9 @@
 .network{
     position: fixed;
     margin-left: 0px;
-    margin-bottom: 200px;
+    margin-bottom: 350px;
     font-family: castellar;
-    font-size: 20px;
+    font-size: 16px;
     height: 50px;
     z-index: 10;
 }
@@ -48,23 +48,23 @@
 .town_hall_icon{
     position: fixed;
     margin-left: -550px;
-    margin-bottom: 0px;
+    margin-bottom: 200px;
     z-index: 10;
 }
 
 .town_hall_icon_frame{
     position: fixed;
     margin-left: -550px;
-    margin-bottom: 0px;
+    margin-bottom: 200px;
     z-index: 11;
 }
 
 .town_hall_text{
     position: fixed;
-    margin-left: 20px;
-    margin-bottom: -30px;
+    margin-left: -80px;
+    margin-bottom: 170px;
     font-family: castellar;
-    font-size: 20px;
+    font-size: 16px;
     height: 50px;
     z-index: 10;
 }
@@ -72,32 +72,32 @@
 .mill_icon{
     position: fixed;
     margin-left: -550px;
-    margin-bottom: -500px;
+    margin-bottom: -300px;
     z-index: 10;
 }
 
 .mill_icon_frame{
     position: fixed;
     margin-left: -550px;
-    margin-bottom: -500px;
+    margin-bottom: -300px;
     z-index: 11;
 }
 
 .mill_text{
     position: fixed;
-    margin-left: 200px;
-    margin-bottom: -500px;
+    margin-left: 100px;
+    margin-bottom: -300px;
     font-family: castellar;
-    font-size: 20px;
+    font-size: 16px;
     height: 50px;
     z-index: 10;
 }
 .mill_text_2{
     position: fixed;
-    margin-left: -220px;
-    margin-bottom: -575px;
+    margin-left: 230px;
+    margin-bottom: -375px;
     font-family: castellar;
-    font-size: 20px;
+    font-size: 16px;
     height: 50px;
     z-index: 10;
 }
@@ -105,23 +105,33 @@
 .trade_icon{
     position: fixed;
     margin-left: -550px;
-    margin-bottom: -250px;
+    margin-bottom: -50px;
     z-index: 10;
 }
 
 .trade_icon_frame{
     position: fixed;
     margin-left: -550px;
-    margin-bottom: -250px;
+    margin-bottom: -50px;
     z-index: 11;
 }
 
 .trade_text{
     position: fixed;
-    margin-left: 100px;
-    margin-bottom: -270px;
+    margin-left: -10px;
+    margin-bottom: -70px;
     font-family: castellar;
-    font-size: 20px;
+    font-size: 16px;
     height: 50px;
+    z-index: 10;
+}
+
+.actions_text{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: -530px;
+    font-family: castellar;
+    width: 800px;
+    font-size: 15px;
     z-index: 10;
 }

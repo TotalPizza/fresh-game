@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 8;
+    z-index: 10;
 }
 
 .menu_background{
