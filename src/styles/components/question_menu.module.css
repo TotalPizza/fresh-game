@@ -1,0 +1,127 @@
+.menu{
+    position: fixed;
+    left: 10%;
+    top: 10%;
+    right: 25%;
+    bottom: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.menu_background{
+    position: fixed;
+    z-index: 10;
+}
+
+.heading{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: 500px;
+    font-family: castellar;
+    font-size: 50px;
+    height: 50px;
+    z-index: 10;
+}
+
+.connect{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: 300px;
+    font-family: castellar;
+    font-size: 20px;
+    height: 50px;
+    z-index: 10;
+}
+
+.network{
+    position: fixed;
+    margin-left: 0px;
+    margin-bottom: 200px;
+    font-family: castellar;
+    font-size: 20px;
+    height: 50px;
+    z-index: 10;
+}
+
+.town_hall_icon{
+    position: fixed;
+    margin-left: -550px;
+    margin-bottom: 0px;
+    z-index: 10;
+}
+
+.town_hall_icon_frame{
+    position: fixed;
+    margin-left: -550px;
+    margin-bottom: 0px;
+    z-index: 11;
+}
+
+.town_hall_text{
+    position: fixed;
+    margin-left: 20px;
+    margin-bottom: -30px;
+    font-family: castellar;
+    font-size: 20px;
+    height: 50px;
+    z-index: 10;
+}
+
+.mill_icon{
+    position: fixed;
+    margin-left: -550px;
+    margin-bottom: -500px;
+    z-index: 10;
+}
+
+.mill_icon_frame{
+    position: fixed;
+    margin-left: -550px;
+    margin-bottom: -500px;
+    z-index: 11;
+}
+
+.mill_text{
+    position: fixed;
+    margin-left: 200px;
+    margin-bottom: -500px;
+    font-family: castellar;
+    font-size: 20px;
+    height: 50px;
+    z-index: 10;
+}
+.mill_text_2{
+    position: fixed;
+    margin-left: -220px;
+    margin-bottom: -575px;
+    font-family: castellar;
+    font-size: 20px;
+    height: 50px;
+    z-index: 10;
+}
+
+.trade_icon{
+    position: fixed;
+    margin-left: -550px;
+    margin-bottom: -250px;
+    z-index: 10;
+}
+
+.trade_icon_frame{
+    position: fixed;
+    margin-left: -550px;
+    margin-bottom: -250px;
+    z-index: 11;
+}
+
+.trade_text{
+    position: fixed;
+    margin-left: 100px;
+    margin-bottom: -270px;
+    font-family: castellar;
+    font-size: 20px;
+    height: 50px;
+    z-index: 10;
+}

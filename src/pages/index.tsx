@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react'
 import { useAccount } from '@starknet-react/core'
 import Background from '@/components/background'
 import BuildButton from '@/components/building_button'
+import QuestionButton from '@/components/question_button'
 import UseMobileView  from '@/hooks/mobile_view'
 import FarmMenu from '@/components/farm_menu'
+import QuestionMenu from '@/components/question_menu'
 import TradeMenu from '@/components/trade_menu'
 import BuildMenu from '@/components/build_menu'
 import TownHallMenu from '@/components/town_hall_menu'
@@ -38,6 +40,7 @@ export default function Home() {
   const [temp_instruction_info, set_temp_instruction_info] = useState<any>({})
   const [instructions, set_instructions] = useState<Instruction[]>([])
   const [show_town_hall_menu, set_show_town_hall_menu] = useState(false)
+  const [show_question_menu, set_show_question_menu] = useState(false)
   const [show_farmer_menu, set_show_farmer_menu] = useState(false)
   const [show_trade_menu, set_show_trade_menu] = useState(false)
   const [dark_mode, set_dark_mode] = useState(false)
@@ -106,23 +109,34 @@ export default function Home() {
     set_show_town_hall_menu(!show_town_hall_menu);
     set_show_build_menu(false);
     set_show_farmer_menu(false);
+    set_show_question_menu(false);
+    set_show_trade_menu(false);
+  }
+  const toggle_question_menu = () => {
+    set_show_question_menu(!show_question_menu);
+    set_show_build_menu(false);
+    set_show_town_hall_menu(false);
+    set_show_farmer_menu(false);
     set_show_trade_menu(false);
   }
   const toggle_trade_menu = () => {
     set_show_trade_menu(!show_trade_menu);
     set_show_build_menu(false);
+    set_show_question_menu(false);
     set_show_farmer_menu(false);
     set_show_town_hall_menu(false);
   }
   const toggle_farm_menu = () => {
     set_show_farmer_menu(!show_farmer_menu);
     set_show_build_menu(false);
+    set_show_question_menu(false);
     set_show_trade_menu(false);
     set_show_town_hall_menu(false);
   }
   const toggle_build_menu = () => {
     set_show_build_menu(!show_build_menu);
     set_show_farmer_menu(false);
+    set_show_question_menu(false);
     set_show_town_hall_menu(false);
     set_show_trade_menu(false);
   }
@@ -201,10 +215,12 @@ export default function Home() {
           <ActionsBar account_address={address} instructions={instructions} clear_instructions={clear_instructions} pop_instruction={pop_instruction}/>
           <ConstructedBuildings buildings={buildings}/>
           <BuildButton toggle_logic={toggle_build_menu}/>
+          <QuestionButton toggle_logic={toggle_question_menu}/>
           <FarmMenu token_balances={token_balances} show={show_farmer_menu} toggle_farm_menu={toggle_farm_menu} placing_field={placing_field}/>
           <TownHallMenu token_balances={token_balances} show={show_town_hall_menu} toggle_farm_menu={toggle_town_hall_menu}/>
           <TradeMenu show={show_trade_menu} address={address} toggle_trade_menu={toggle_trade_menu} add_transfer_instruction={add_transfer_instruction}/>
           <BuildMenu building_status={building_status} show={show_build_menu} toggle_build_menu={toggle_build_menu} placing_building={placing_building}/>
+          <QuestionMenu show={show_question_menu} toggle_question_menu={toggle_question_menu}/>
           <Pepe/>
           <WalletButton account={account}/>
           <CursorItem item_image={selected_building} cancel_building_placement={cancel_building_placement} place_building={place_building} buildings={buildings}/>

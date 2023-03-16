@@ -1,0 +1,24 @@
+.button{
+    bottom: 90px;
+    left: 198px;
+    position: fixed;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.icon{
+    position: fixed;
+    z-index: 3;
+}
+
+.icon_highlight{
+    position: fixed;
+    opacity: 0;
+    z-index: 3;
+}
+
+.icon_highlight:hover{
+    position: fixed;
+    opacity: 1;
+    z-index: 3;
+}
