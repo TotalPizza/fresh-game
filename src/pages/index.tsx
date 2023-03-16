@@ -15,7 +15,12 @@ import { BuildItem, BuildType } from '@/components/cursor_item'
 import ConstructedBuildings from '@/components/buildings'
 import { Instruction, Action, Protocol, Token, TransferContext} from '@/utils/interfaces'
 import { ActionsBar } from '@/components/actions_bar'
+import {tokens, token_addresses, token_decimals} from '@/hooks/token_list'
 import Image from 'next/image'
+import erc20_abi from '@/abis/erc20.json'
+import { Abi } from 'starknet'
+import { useContract } from '@starknet-react/core'
+import { ethers } from 'ethers'
 
 export interface BuildingPlacement {
     x: number,
@@ -39,13 +44,38 @@ export default function Home() {
   const [building_status, set_building_status] = useState<boolean[]>([false,true,true]);
   const {account, address, status} = useAccount();  
   const [isLoading, setIsLoading] = useState(true);
+  const [token_balances, set_token_balances] = useState<string[]>(["0.00","0.00"]);
 
   useEffect(() => {
     // Preload all images ... not finished
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
-  }, []);
+  }, []);  
+    
+  const ETH = useContract({
+      address: token_addresses[Token.ETH],
+      abi: erc20_abi as Abi
+  })
+
+  const USDC = useContract({
+      address: token_addresses[Token.USDC],
+      abi: erc20_abi as Abi
+  })
+
+  useEffect(() => {
+      if (address != undefined) {            
+        let result: any;  
+        ETH.contract?.call('balanceOf', [address]).then((res) => {
+            result = res;
+            const eth_balance = Number(ethers.formatUnits(result.balance.low.toString(), token_decimals[Token.ETH])).toFixed(4).toString();
+            USDC.contract?.call('balanceOf', [address]).then((res) => {
+                result = res;
+                set_token_balances([eth_balance, Number(ethers.formatUnits(result.balance.low.toString(), token_decimals[Token.USDC])).toFixed(4).toString()]);
+            })
+        })
+      }
+  }, [address])
 
   const pop_instruction = () => {
     // remove last entry of instructions
@@ -162,7 +192,7 @@ export default function Home() {
           <ActionsBar account_address={address} instructions={instructions} clear_instructions={clear_instructions} pop_instruction={pop_instruction}/>
           <ConstructedBuildings buildings={buildings}/>
           <BuildButton toggle_logic={toggle_build_menu}/>
-          <FarmMenu show={show_farmer_menu} toggle_farm_menu={toggle_farm_menu} placing_field={placing_field} account_address={address}/>
+          <FarmMenu token_balances={token_balances} show={show_farmer_menu} toggle_farm_menu={toggle_farm_menu} placing_field={placing_field}/>
           <TradeMenu show={show_trade_menu} address={address} toggle_trade_menu={toggle_trade_menu} add_transfer_instruction={add_transfer_instruction}/>
           <BuildMenu building_status={building_status} show={show_build_menu} toggle_build_menu={toggle_build_menu} placing_building={placing_building}/>
           <Pepe/>

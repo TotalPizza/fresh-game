@@ -2,41 +2,12 @@ import {useState, useEffect} from 'react'
 import Image from 'next/image'
 import styles from '@/styles/components/menu.module.css'
 import XButton from './x_button'
-import {tokens, token_name,token_addresses, token_decimals} from '@/hooks/token_list'
+import {tokens, token_name} from '@/hooks/token_list'
 import {protocols, protocol_name, protocol_farm_icon, protocol_farms_values} from '@/hooks/protocol_list'	
 import {Protocol, Token} from '@/utils/interfaces'
-import erc20_abi from '@/abis/erc20.json'
-import { Abi } from 'starknet'
-import { useContract } from '@starknet-react/core'
-import { ethers } from 'ethers'
 
-export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => void, placing_field: (protocol: Protocol, amount: string, token: Token) => void, account_address: string|undefined}) {
+export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => void, placing_field: (protocol: Protocol, amount: string, token: Token) => void, token_balances: string[]}) {
     const [selected_token, set_selected_token] = useState<Token>(Token.ETH);
-    const [token_balances, set_token_balances] = useState<string[]>(["0.00","0.00"]);
-    
-    const ETH = useContract({
-        address: token_addresses[Token.ETH],
-        abi: erc20_abi as Abi
-    })
-
-    const USDC = useContract({
-        address: token_addresses[Token.USDC],
-        abi: erc20_abi as Abi
-    })
-
-    useEffect(() => {
-        if (props.account_address != undefined) {            
-            let result: any;  
-            ETH.contract?.call('balanceOf', [props.account_address]).then((res) => {
-                result = res;
-                const eth_balance = Number(ethers.formatUnits(result.balance.low.toString(), token_decimals[Token.ETH])).toFixed(4).toString();
-                USDC.contract?.call('balanceOf', [props.account_address]).then((res) => {
-                    result = res;
-                    set_token_balances([eth_balance, Number(ethers.formatUnits(result.balance.low.toString(), token_decimals[Token.USDC])).toFixed(4).toString()]);
-                })
-            })
-        }
-    }, [selected_token, props.account_address])
 
     return (
         <div className={styles.menu} hidden={!props.show}>
@@ -46,7 +17,7 @@ export default function FarmMenu(props: {show: boolean, toggle_farm_menu: () => 
             <table className={styles.seeds_table}>
                 <tbody>
                     <br/>
-                    <SeedsList selected_token={selected_token} set_selected_token={set_selected_token} token_balances={token_balances}/>
+                    <SeedsList selected_token={selected_token} set_selected_token={set_selected_token} token_balances={props.token_balances}/>
                 </tbody>
             </table>
             <table className={styles.fields_table}>
