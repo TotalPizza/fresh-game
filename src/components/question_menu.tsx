@@ -27,7 +27,7 @@ export default function QuestionMenu(props: {show: boolean, toggle_question_menu
 
             <div className={styles.actions_text}>Exchaning tokens and lending is not executed imediately. 
             The actions are first placed in the banner on the right. If you have finished performing all 
-            your different actions you can press the "Execute" button in the bottom right corner to execute all the queued actions</div>
+            your different actions you can press the *Execute* button in the bottom right corner to execute all the queued actions</div>
                 
         </div>
     )
