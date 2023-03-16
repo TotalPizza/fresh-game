@@ -2,7 +2,7 @@ import {useState} from 'react'
 import Image from 'next/image'
 import styles from '@/styles/components/menu.module.css'
 import XButton from './x_button'
-import {tokens} from '@/hooks/token_list'
+import {tokens, token_name} from '@/hooks/token_list'
 import {protocols, protocol_name, protocol_farm_icon, protocol_farms_values} from '@/hooks/protocol_list'	
 import {Protocol, Token} from '@/utils/interfaces'
 
@@ -94,7 +94,7 @@ function FieldsList(props:{token: Token, placing_field: (protocol: Protocol, amo
                         {token_amount}
                     </td>
                     <td className={styles.fields_col}>
-                        {"1% APY"}
+                        {token_name[props.token]}
                     </td>
                 </tr>
             ) 

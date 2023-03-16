@@ -9,6 +9,7 @@ import BuildMenu from '@/components/build_menu'
 import WalletButton from '@/components/wallet'
 import MobileView from '@/components/mobile_view'
 import LoadingScreen from '@/components/loading_screen'
+import Pepe from '@/components/pepe'
 import CursorItem from '@/components/cursor_item'
 import { BuildItem, BuildType } from '@/components/cursor_item'
 import ConstructedBuildings from '@/components/buildings'
@@ -164,7 +165,7 @@ export default function Home() {
           <FarmMenu show={show_farmer_menu} toggle_farm_menu={toggle_farm_menu} placing_field={placing_field}/>
           <TradeMenu show={show_trade_menu} address={address} toggle_trade_menu={toggle_trade_menu} add_transfer_instruction={add_transfer_instruction}/>
           <BuildMenu building_status={building_status} show={show_build_menu} toggle_build_menu={toggle_build_menu} placing_building={placing_building}/>
-          <Image style={{top: 530, left: 600, position: "absolute", zIndex: 4}} src={"/images/little_helper.png"} alt={"little_helper"} width={33} height={40}/>
+          <Pepe/>
           <WalletButton account={account}/>
           <CursorItem item_image={selected_building} cancel_building_placement={cancel_building_placement} place_building={place_building} buildings={buildings}/>
         </body>

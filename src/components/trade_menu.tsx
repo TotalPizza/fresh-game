@@ -43,11 +43,11 @@ export default function BuildMenu(props: {address: string|undefined, show: boole
             <Image className={styles.value_filler_2} priority={true} alt={"usdc_value_Seed"} src={"/images/value_frame_filler.png"} width={300} height={70}/>
             <Image className={styles.value_filler_frame_1} priority={true} alt={"eth_value_frame"} src={"/images/value_frame.png"} width={300} height={70}/>
             <Image className={styles.value_filler_frame_2} priority={true} alt={"usdc_value_frame"} src={"/images/value_frame.png"} width={300} height={70}/>
-            <input className={styles.in_text_box} type="number" placeholder="0.001" value={tradeValue} onChange={e => {
+            <input className={styles.in_text_box} style={{paddingInline: "10px"}} type="number" placeholder="0.001" value={tradeValue} onChange={e => {
                 setTradeValue(e.target.value);
                 setLoading(true);
             }}></input>
-            <input className={styles.out_text_box} type="text" disabled placeholder="0.0" value={outputAmount}></input>
+            <input className={styles.out_text_box} style={{paddingInline: "10px"}} type="text" disabled placeholder="0.0" value={outputAmount}></input>
             <div className={styles.spinner}>
                 <Image className={styles.wololo} hidden={!loading} alt={"wololo"} src={"/images/wololo.gif"} width={70} height={100}/>
                 <div className={styles.convertingText} hidden={!loading}>Converting Prices...</div>
