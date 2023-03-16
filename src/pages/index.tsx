@@ -244,6 +244,7 @@ export default function Home() {
           <Image src="/images/nostra_mill_icon.png" key={14} priority={true} alt={"nostra_mill_icon"} width={100} height={100} />,
           <Image src="/images/nostra_mill_icon_disabled.png" key={15} priority={true} alt={"nostra_mill_icon_disabled"} width={100} height={100} />,
           <Image src="/fields/nostra.png" key={16} priority={true} alt={"field_icon"} width={100} height={100} />,
+          <Image src={"/images/wololo.gif"} priority={true} alt={"wololo"} width={70} height={100}/>
         </div>
       </>
     )

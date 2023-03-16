@@ -49,7 +49,7 @@ export default function BuildMenu(props: {address: string|undefined, show: boole
             }}></input>
             <input className={styles.out_text_box} style={{paddingInline: "10px"}} type="text" disabled placeholder="0.0" value={outputAmount}></input>
             <div className={styles.spinner}>
-                <Image className={styles.wololo} hidden={!loading} alt={"wololo"} src={"/images/wololo.gif"} width={70} height={100}/>
+                <Image className={styles.wololo} priority={true} hidden={!loading} alt={"wololo"} src={"/images/wololo.gif"} width={70} height={100}/>
                 <div className={styles.convertingText} hidden={!loading}>Converting Prices...</div>
             </div>    
             <SwapButton add_transfer_instruction={props.add_transfer_instruction} trade_info={[tokens[0],tokens[1],tradeValue]} toggle_trade_menu={props.toggle_trade_menu}/>
