@@ -6,6 +6,7 @@ import UseMobileView  from '@/hooks/mobile_view'
 import FarmMenu from '@/components/farm_menu'
 import TradeMenu from '@/components/trade_menu'
 import BuildMenu from '@/components/build_menu'
+import TownHallMenu from '@/components/town_hall_menu'
 import WalletButton from '@/components/wallet'
 import MobileView from '@/components/mobile_view'
 import LoadingScreen from '@/components/loading_screen'
@@ -36,6 +37,7 @@ export default function Home() {
   const [selected_building, set_selected_building] = useState<BuildItem>({building: BuildType.None, src: '', width: 0, height: 0})
   const [temp_instruction_info, set_temp_instruction_info] = useState<any>({})
   const [instructions, set_instructions] = useState<Instruction[]>([])
+  const [show_town_hall_menu, set_show_town_hall_menu] = useState(false)
   const [show_farmer_menu, set_show_farmer_menu] = useState(false)
   const [show_trade_menu, set_show_trade_menu] = useState(false)
   const [dark_mode, set_dark_mode] = useState(false)
@@ -101,20 +103,27 @@ export default function Home() {
     set_instructions([]);
   }
   const toggle_town_hall_menu = () => {
+    set_show_town_hall_menu(!show_town_hall_menu);
+    set_show_build_menu(false);
+    set_show_farmer_menu(false);
+    set_show_trade_menu(false);
   }
   const toggle_trade_menu = () => {
     set_show_trade_menu(!show_trade_menu);
     set_show_build_menu(false);
     set_show_farmer_menu(false);
+    set_show_town_hall_menu(false);
   }
   const toggle_farm_menu = () => {
     set_show_farmer_menu(!show_farmer_menu);
     set_show_build_menu(false);
     set_show_trade_menu(false);
+    set_show_town_hall_menu(false);
   }
   const toggle_build_menu = () => {
     set_show_build_menu(!show_build_menu);
     set_show_farmer_menu(false);
+    set_show_town_hall_menu(false);
     set_show_trade_menu(false);
   }
   const toggle_dark_mode = () => {
@@ -193,6 +202,7 @@ export default function Home() {
           <ConstructedBuildings buildings={buildings}/>
           <BuildButton toggle_logic={toggle_build_menu}/>
           <FarmMenu token_balances={token_balances} show={show_farmer_menu} toggle_farm_menu={toggle_farm_menu} placing_field={placing_field}/>
+          <TownHallMenu token_balances={token_balances} show={show_town_hall_menu} toggle_farm_menu={toggle_town_hall_menu}/>
           <TradeMenu show={show_trade_menu} address={address} toggle_trade_menu={toggle_trade_menu} add_transfer_instruction={add_transfer_instruction}/>
           <BuildMenu building_status={building_status} show={show_build_menu} toggle_build_menu={toggle_build_menu} placing_building={placing_building}/>
           <Pepe/>

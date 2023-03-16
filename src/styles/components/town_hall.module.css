@@ -1,11 +1,49 @@
-.building{
+.menu{
     position: fixed;
-    cursor: pointer;
-    top: 250px;
-    left: 500px;
-    z-index: 4;
+    left: 10%;
+    top: 10%;
+    right: 25%;
+    bottom: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
 }
 
-.town_hall{
-    z-index: 4;
+.menu_background{
+    position: fixed;
+    z-index: 10;
+}
+
+.seeds_table{
+    position: fixed;
+    margin-right: 0px;
+    margin-bottom: 100px;
+    z-index: 10;
+}
+
+.fields_table{
+    position: fixed;
+    margin-left: 450px;
+    margin-bottom: 150px;
+    z-index: 10;
+}
+
+.seeds_heading{
+    position: fixed;
+    margin-right: 0px;
+    margin-bottom: 400px;
+    font-family: castellar;
+    font-size: 50px;
+    height: 50px;
+    z-index: 10;
+}
+
+.seeds_col{
+    min-width: 70px;
+}
+
+.seeds_row{
+    font-family: castellar;
+    border-top: dashed;
 }
